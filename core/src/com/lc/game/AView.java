@@ -16,7 +16,7 @@ public abstract class AView extends Stage{
 	protected StateManager stateManager;
 	
 	protected String VIEW_TYPE = "DEFAULT";
-	
+
 	public AView(AssetManager assetManager, StateManager stateManager) {
 		this.assetManager = assetManager;
 		this.stateManager = stateManager;
@@ -24,12 +24,18 @@ public abstract class AView extends Stage{
 	}
 	
 	public abstract void init();
-	
-	public abstract void act();
-	
+		
 	protected abstract void setType();
 	
 	public String toString() {
 		return VIEW_TYPE;
+	}
+	
+	public AssetManager getAssetManager() {
+		return assetManager;
+	}
+
+	public StateManager getStateManager() {
+		return stateManager;
 	}
 }

@@ -4,10 +4,15 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.graphics.Color;
 //import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.lc.game.Manager.StateManager;
 import com.lc.game.Manager.ViewManager;
@@ -22,12 +27,18 @@ public class LiarGame extends ApplicationAdapter {
 	public static int CONFIG_WIDTH;
 	public static int CONFIG_HEIGHT;
 	
+	private static boolean DEBUG = true;
+	
 	private static OrthographicCamera camera;
     public static FitViewport viewport;
+	private static ShapeRenderer shapeRenderer;
     
     private static ViewManager viewManager;
     private static StateManager stateManager;
     private static AssetManager assetManager;
+    
+    public static BitmapFont SYSTEM_FONT_TITLE, SYSTEM_FONT_TEXT;
+    public static Color DEFAULT_TEXT_COLOR;
 
 //	private static FPSLogger fpsLogger = new FPSLogger();
 	
@@ -44,6 +55,10 @@ public class LiarGame extends ApplicationAdapter {
         viewport = new FitViewport(CONFIG_WIDTH, CONFIG_HEIGHT, camera);
         viewport.apply();
         
+        shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setColor(Color.RED);
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        
         Gdx.graphics.setWindowedMode(CONFIG_WIDTH, CONFIG_HEIGHT);
        
         assetManager = new AssetManager(new InternalFileHandleResolver());
@@ -55,7 +70,7 @@ public class LiarGame extends ApplicationAdapter {
         viewManager.createView(TitleView.class, assetManager, stateManager);
                 
 	}
-	
+
 	@Override
 	public void resize(int width, int height) {
 	    viewport.update(width, height, true);
@@ -69,18 +84,31 @@ public class LiarGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		ViewManager.getCurrentView().act();
-		batch.begin();
 		ViewManager.getCurrentView().draw();
-		batch.end();
+		if (DEBUG) {
+			shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+			Array<Actor> actors = ViewManager.getCurrentView().getActors();
+			for (Actor a : actors) {
+				if (a instanceof AChristmasActor && ((AChristmasActor) a).getHitBox() != null) {
+					shapeRenderer.polygon(((AChristmasActor) a).getHitBox().getTransformedVertices());
+				}
+			}
+			shapeRenderer.end();
+		}
 	}
-	
+
 	@Override
 	public void dispose () {
 		batch.dispose();
 	}
 	
 	public void loadAssets() {
-        for (AssetList asset: AssetList.values()) {
+        
+		SYSTEM_FONT_TITLE = new BitmapFont(Gdx.files.internal(AssetList.LEARNING_FONT.toString()), false);
+		SYSTEM_FONT_TEXT = new BitmapFont(Gdx.files.internal(AssetList.BUTLER_FONT.toString()), false);
+		DEFAULT_TEXT_COLOR = Color.BLACK;
+		
+		for (AssetList asset: AssetList.values()) {
             if (asset.getType() != null) {
                 assetManager.load(asset.toString(), asset.getType());
             }
@@ -88,4 +116,14 @@ public class LiarGame extends ApplicationAdapter {
 
         assetManager.finishLoading();
     }
+	
+	//Exposes ViewManager so that it can be utilized by other views.
+	public static ViewManager getViewManager() {
+		return viewManager;
+	}
+	
+	//Exposes camera for use by other classes.
+	public static OrthographicCamera getCamera() {
+		return camera;
+	}
 }
