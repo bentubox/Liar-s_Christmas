@@ -1,7 +1,9 @@
 package com.lc.game;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.Manager.StateManager;
 
 /**
@@ -17,7 +19,8 @@ public abstract class AView extends Stage{
 	
 	protected String VIEW_TYPE = "DEFAULT";
 
-	public AView(AssetManager assetManager, StateManager stateManager) {
+	public AView(AssetManager assetManager, StateManager stateManager, Viewport viewport, Batch batch) {
+		super(viewport, batch);
 		this.assetManager = assetManager;
 		this.stateManager = stateManager;
 		setType();

@@ -1,9 +1,11 @@
 package com.lc.game.Map;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AView;
 import com.lc.game.LiarGame;
 import com.lc.game.Manager.StateManager;
@@ -17,34 +19,35 @@ import com.lc.game.Title.TitleView;
 public class MapView extends AView{
 
 	private MapBackdrop map;
-	private ArrayList<Node> nodeArray;
-	private ArrayList<Edge> edgeArray;
+	private HashMap<String, Node> nodeMap;
+	private HashMap<String, Edge> edgeMap;
 	
-	public MapView(AssetManager assetManager, StateManager stateManager) {
-		super(assetManager, stateManager);
+	private static float MIN_ZOOM = 1.6f;
+	private static float MAX_ZOOM = 0.5f;
+	
+	public MapView(AssetManager assetManager, StateManager stateManager, Viewport viewport, Batch batch) {
+		super(assetManager, stateManager, viewport, batch);
 		map = new MapBackdrop(assetManager);
 		addActor(map);
 		
-		//Add nodes.
-		nodeArray = new ArrayList<Node>();
-		nodeArray.add(new SunkenDormitory(assetManager, map));
-		nodeArray.add(new TheGlade(assetManager, map));
+		//Add nodes and edges.
+		nodeMap = new HashMap<String, Node>();
+		edgeMap = new HashMap<String, Edge>();
 		
-		//Add edges.
-		edgeArray = new ArrayList<Edge>();
-		edgeArray.add(new Edge(assetManager, nodeArray.get(0), nodeArray.get(1)));
-		
-		for(Edge e : edgeArray) {
+		addNode(new SunkenDormitory(assetManager, map));		
+		addNode(new TheGlade(assetManager, map));
+
+		for(Edge e : edgeMap.values()) {
 			addActor(e);
 		}
-		for(Node n : nodeArray) {
+		for(Node n : nodeMap.values()) {
 			addActor(n);
 		}
 	}
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
+		// TODO: Initialize map nodes according to visited/discovered status and map zoom level.
 		
 	}
 
@@ -58,9 +61,37 @@ public class MapView extends AView{
         boolean isHandled = false;
 
         if (keyCode == Input.Keys.ESCAPE) {
+        	//Reset zoom.
+        	LiarGame.resetCamera();
             LiarGame.getViewManager().createView(TitleView.class, assetManager, stateManager);
+            isHandled = true;
         }
 
         return isHandled;
     }
+	
+	@Override
+	public boolean scrolled(int amount) {
+		if(amount > 0 && LiarGame.getCurrentZoom() + 0.1f < MIN_ZOOM) {
+			LiarGame.zoomCamera(0.1f);
+			return true;
+		} else if (amount < 0 && LiarGame.getCurrentZoom() - 0.1f > MAX_ZOOM) {
+			LiarGame.zoomCamera(-0.1f);
+			return true;
+		}
+		return false;
+	}
+	
+	private void addNode(Node newNode) {
+		for(String n : newNode.getNeighbors()) {
+			Node neighbor = nodeMap.get(n);
+			if(neighbor != null) {
+				Edge newEdge = new Edge(neighbor.getAssetManager(), newNode, neighbor);
+				newNode.getConnections().add(newEdge);
+				neighbor.getConnections().add(newEdge);
+				edgeMap.put(newEdge.getId(), newEdge);
+			}
+		}
+		nodeMap.put(newNode.getName(), newNode);
+	}
 }

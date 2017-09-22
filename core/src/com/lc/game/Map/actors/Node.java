@@ -1,6 +1,7 @@
 package com.lc.game.Map.actors;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
@@ -35,6 +36,10 @@ public abstract class Node extends AChristmasActor{
 	private InputListener nodeListener;
 	private int relX, relY;
 	
+	//Array of neighboring node names.
+	private List<String> neighbors;
+
+	//Array of outgoing edges, built from neighbors when map is generated.
 	private ArrayList<Edge> connections;
 
 	public Node(AssetManager assetManager, String name, int relX, int relY, AChristmasActor map) {
@@ -58,13 +63,23 @@ public abstract class Node extends AChristmasActor{
 			@Override
 			public void enter (InputEvent event, float x, float y, int pointer, Actor fromActor) {
 				super.enter(event, y, y, pointer, fromActor);
-				setShowName(true);
+				if(pointer == -1) {
+					setShowName(true);
+					for(Edge e : connections) {
+						e.setDrawEdge(true);
+					}
+				}
 			}
 
 			@Override
 			public void exit (InputEvent event, float x, float y, int pointer, Actor toActor) {
 				super.exit(event, x, y, pointer, toActor);
-				setShowName(false);
+				if(pointer == -1) {
+					setShowName(false);
+					for(Edge e : connections) {
+						e.setDrawEdge(false);
+					}
+				}
 			}
 		};
 		addListener(nodeListener);
@@ -73,12 +88,12 @@ public abstract class Node extends AChristmasActor{
 		this.relY = relY;
 		followMe = map;
 		
-		initConnections();
+		neighbors = new ArrayList<String>();
+		connections = new ArrayList<Edge>();
+		initNeighbors();
 	}
 	
-	private void initConnections() {
-		connections = new ArrayList<Edge>();
-	}
+	protected abstract void initNeighbors();
 
 	@Override
 	public void act(float delta) {
@@ -98,7 +113,7 @@ public abstract class Node extends AChristmasActor{
 			font.setColor(LiarGame.DEFAULT_TEXT_COLOR);	
 		}
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -117,5 +132,13 @@ public abstract class Node extends AChristmasActor{
 
 	public ArrayList<Edge> getConnections() {
 		return connections;
+	}
+
+	public List<String> getNeighbors() {
+		return neighbors;
+	}
+	
+	protected void setNeighbors(List<String> neighbors) {
+		this.neighbors = neighbors;
 	}
 }
