@@ -11,16 +11,19 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.lc.game.Manager.StateManager;
 import com.lc.game.Manager.ViewManager;
+import com.lc.game.Map.actors.Edge;
 import com.lc.game.Title.TitleView;
 
 public class LiarGame extends ApplicationAdapter {
 	
-	SpriteBatch batch;
+	private static SpriteBatch batch;
 	private static int DEFAULT_WIDTH = 1600;
 	private static int DEFAULT_HEIGHT = 900;
 	
@@ -33,7 +36,7 @@ public class LiarGame extends ApplicationAdapter {
     public static FitViewport viewport;
 	private static ShapeRenderer shapeRenderer;
     
-    private static ViewManager viewManager;
+	private static ViewManager viewManager;
     private static StateManager stateManager;
     private static AssetManager assetManager;
     
@@ -59,16 +62,17 @@ public class LiarGame extends ApplicationAdapter {
         shapeRenderer.setColor(Color.RED);
         shapeRenderer.setProjectionMatrix(camera.combined);
         
+        batch.setProjectionMatrix(camera.combined);
+        
         Gdx.graphics.setWindowedMode(CONFIG_WIDTH, CONFIG_HEIGHT);
        
         assetManager = new AssetManager(new InternalFileHandleResolver());
         loadAssets();
 
         stateManager = new StateManager();
-        viewManager = new ViewManager(assetManager, stateManager);
+        viewManager = new ViewManager(assetManager, stateManager, viewport, batch);
         
         viewManager.createView(TitleView.class, assetManager, stateManager);
-                
 	}
 
 	@Override
@@ -122,8 +126,51 @@ public class LiarGame extends ApplicationAdapter {
 		return viewManager;
 	}
 	
-	//Exposes camera for use by other classes.
-	public static OrthographicCamera getCamera() {
-		return camera;
+	//Camera utilities.
+	private static void updateRenderers() {
+		camera.update();
+		shapeRenderer.setProjectionMatrix(camera.combined);
+		for(Actor a : ViewManager.getCurrentView().getActors()) {
+			if (a instanceof Edge) {
+				((Edge) a).getEdgeRenderer().setProjectionMatrix(camera.combined);
+			}
+		}
+        batch.setProjectionMatrix(camera.combined);
+	}
+	
+	public static void resetCamera() {
+		camera.zoom = 1.0f;
+    	camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+    	updateRenderers();
+	}
+	
+	public static void moveCamera(float x, float y) {
+		camera.translate(x, y);
+		updateRenderers();
+	}
+	
+	public static void zoomCamera(float amount) {
+		camera.zoom += amount;
+		updateRenderers();
+	}
+	
+	public static float getCurrentZoom() {
+		return camera.zoom;
+	}
+	
+	public static Matrix4 getProjectionMatrix() {
+		return camera.combined;
+	}
+	
+	public static Vector3 getCameraPosition() {
+		return camera.position;
+	}
+	
+	public static float getCameraViewportWidth() {
+		return camera.viewportWidth;
+	}
+	
+	public static float getCameraViewportHeight() {
+		return camera.viewportHeight;
 	}
 }

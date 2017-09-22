@@ -1,8 +1,10 @@
 package com.lc.game.Title;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AChristmasActor;
 import com.lc.game.AView;
 import com.lc.game.LiarGame;
@@ -20,8 +22,8 @@ public class TitleView extends AView{
 	//Temporary links to other modules for testing.
 	private AChristmasActor mapOption, dialogueOption;
 	
-	public TitleView(AssetManager assetManager, StateManager stateManager) {
-		super(assetManager, stateManager);
+	public TitleView(AssetManager assetManager, StateManager stateManager, Viewport viewport, Batch batch) {
+		super(assetManager, stateManager, viewport, batch);
 		addActor(new TitleBackdrop(assetManager));
 		addActor(new Text(assetManager, "Liar's Christmas", 100, LiarGame.CONFIG_HEIGHT - 100, true));
 		mapOption = new Text(assetManager, "MAP", 150, LiarGame.CONFIG_HEIGHT - 180);

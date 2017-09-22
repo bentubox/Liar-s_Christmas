@@ -36,34 +36,50 @@ public class MapBackdrop extends AChristmasActor{
 			
 			@Override
 			public void drag(InputEvent event, float x, float y, int pointer) {
-				//Calculate intended drag.
-				Point2D deltaDrag = new Point2D(x - dragStart.x, y - dragStart.y);
-				//Check bounds to disable excess dragging.
-				if((getX() > 0 && deltaDrag.x > 0) || 
-						(getX() + mapTexture.getWidth() < LiarGame.CONFIG_WIDTH && deltaDrag.x < 0) ||
-						(getY() > 0 && deltaDrag.y > 0) ||
-						(getY() + mapTexture.getHeight() < LiarGame.CONFIG_HEIGHT && deltaDrag.y < 0)) {
-					dragStart.setLocation(x, y);
-				}
-				
-				//Recalculate actual drag.
-				deltaDrag.setLocation(new Point2D(x - dragStart.x, y - dragStart.y));
-				moveBy(deltaDrag.x, deltaDrag.y);
-				
-				//Return to bounds if exceeded.
-				if(getX() > 0 && deltaDrag.x > 0) {
-					setX(0);
-				} else if(getX() + mapTexture.getWidth() < LiarGame.CONFIG_WIDTH && deltaDrag.x < 0) {
-					setX(LiarGame.CONFIG_WIDTH - mapTexture.getWidth());
-				}
-				if(getY() > 0 && deltaDrag.y > 0) {
-					setY(0);
-				} else if(getY() + mapTexture.getHeight() < LiarGame.CONFIG_HEIGHT && deltaDrag.y < 0) {
-					setY(LiarGame.CONFIG_HEIGHT - mapTexture.getHeight());
-				}
-		    	updateHitBox();
+				LiarGame.moveCamera(dragStart.x - x, dragStart.y - y);
 		    }
 		});
+	}
+	
+	@Override
+	public void act(float delta) {
+		//Return camera to bounds.
+		
+		if(mapTexture.getWidth() < LiarGame.getCameraViewportWidth() * LiarGame.getCurrentZoom()) {
+			float leftBound = mapTexture.getWidth() - (LiarGame.getCameraViewportWidth() * LiarGame.getCurrentZoom()) / 2;
+			float rightBound = (LiarGame.getCameraViewportWidth() * LiarGame.getCurrentZoom()) / 2;
+			if(LiarGame.getCameraPosition().x < leftBound) {
+				LiarGame.moveCamera(leftBound - LiarGame.getCameraPosition().x, 0);
+			} else if (LiarGame.getCameraPosition().x > rightBound) {
+				LiarGame.moveCamera(rightBound - LiarGame.getCameraPosition().x, 0);
+			}
+		} else {
+			float leftBound = (LiarGame.getCameraViewportWidth() * LiarGame.getCurrentZoom()) / 2;
+			float rightBound = mapTexture.getWidth() - (LiarGame.getCameraViewportWidth() * LiarGame.getCurrentZoom()) / 2;
+			if(LiarGame.getCameraPosition().x < leftBound) {
+				LiarGame.moveCamera(leftBound - LiarGame.getCameraPosition().x, 0);
+			} else if (LiarGame.getCameraPosition().x > rightBound) {
+				LiarGame.moveCamera(rightBound - LiarGame.getCameraPosition().x, 0);
+			}
+		}
+		
+		if(mapTexture.getHeight() < LiarGame.getCameraViewportHeight() * LiarGame.getCurrentZoom()) {
+			float lowerBound = mapTexture.getHeight() - (LiarGame.getCameraViewportHeight() * LiarGame.getCurrentZoom()) / 2;
+			float upperBound = (LiarGame.getCameraViewportHeight() * LiarGame.getCurrentZoom()) / 2;
+			if(LiarGame.getCameraPosition().y < lowerBound) {
+				LiarGame.moveCamera(0, lowerBound - LiarGame.getCameraPosition().y);
+			} else if (LiarGame.getCameraPosition().y > upperBound) {
+				LiarGame.moveCamera(0, upperBound - LiarGame.getCameraPosition().y);
+			}
+		} else {
+			float lowerBound = (LiarGame.getCameraViewportHeight() * LiarGame.getCurrentZoom()) / 2;
+			float upperBound = mapTexture.getHeight() - (LiarGame.getCameraViewportHeight() * LiarGame.getCurrentZoom()) / 2;
+			if(LiarGame.getCameraPosition().y < lowerBound) {
+				LiarGame.moveCamera(0, lowerBound - LiarGame.getCameraPosition().y);
+			} else if (LiarGame.getCameraPosition().y > upperBound) {
+				LiarGame.moveCamera(0, upperBound - LiarGame.getCameraPosition().y);
+			}
+		}
 	}
 	
 	@Override
