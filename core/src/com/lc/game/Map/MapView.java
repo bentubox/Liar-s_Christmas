@@ -68,6 +68,26 @@ public class MapView extends AView{
 		addNode(new ThePowerGrid(assetManager, map));
 		addNode(new TheReservoir(assetManager, map));
 
+		addNode(new ImmolatedDormitory(assetManager, map));
+		addNode(new TheFurnace(assetManager, map));
+		addNode(new TheRefinery(assetManager, map));
+		addNode(new TheChimney(assetManager, map));
+
+		addNode(new TheCliff(assetManager, map));
+		addNode(new TheLift(assetManager, map));
+		addNode(new ThePeaks(assetManager, map));
+		addNode(new RiversSource(assetManager, map));
+
+		addNode(new UnearthedDormitory(assetManager, map));
+		addNode(new AbandonedMiningVillage(assetManager, map));
+		addNode(new TheDig(assetManager, map));
+		addNode(new TheSepulchre(assetManager, map));
+
+		addNode(new TheTannenbaum(assetManager, map));
+		addNode(new OvergrownDormitory(assetManager, map));
+		addNode(new ThePlot(assetManager, map));
+		addNode(new HedgeMaze(assetManager, map));
+
 		
 		for(Edge e : edgeMap.values()) {
 			addActor(e);
