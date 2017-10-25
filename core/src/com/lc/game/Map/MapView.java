@@ -12,8 +12,7 @@ import com.lc.game.Manager.StateManager;
 import com.lc.game.Map.actors.Edge;
 import com.lc.game.Map.actors.MapBackdrop;
 import com.lc.game.Map.actors.Node;
-import com.lc.game.Map.actors.nodes.SunkenDormitory;
-import com.lc.game.Map.actors.nodes.TheGlade;
+import com.lc.game.Map.actors.nodes.*;
 import com.lc.game.Title.TitleView;
 
 public class MapView extends AView{
@@ -34,9 +33,42 @@ public class MapView extends AView{
 		nodeMap = new HashMap<String, Node>();
 		edgeMap = new HashMap<String, Edge>();
 		
+		addNode(new SoddenLot(assetManager, map));
 		addNode(new SunkenDormitory(assetManager, map));		
 		addNode(new TheGlade(assetManager, map));
+		addNode(new TheFountain(assetManager, map));
+		addNode(new TheMangroves(assetManager, map));
 
+		addNode(new TheTrough(assetManager, map));
+		addNode(new TheSluice(assetManager, map));
+		addNode(new BefouledDormitory(assetManager, map));
+		addNode(new TheSewer(assetManager, map));
+		addNode(new TheClot(assetManager, map));
+
+		addNode(new UncleanDormitory(assetManager, map));
+		addNode(new TheHeap(assetManager, map));
+		addNode(new ReclamationPlant(assetManager, map));
+		addNode(new UnusedRooms(assetManager, map));
+		addNode(new TheVault(assetManager, map));
+
+		addNode(new TheStomach(assetManager, map));
+		addNode(new TheLiver(assetManager, map));
+		addNode(new TheSpleen(assetManager, map));
+		addNode(new TheBrain(assetManager, map));
+
+		addNode(new TheOverlook(assetManager, map));
+		addNode(new FoundersCourt(assetManager, map));
+		addNode(new OutsidetheGate(assetManager, map));
+
+		addNode(new InsidetheGate(assetManager, map));
+		addNode(new CentralCourt(assetManager, map));
+
+		addNode(new TheCanal(assetManager, map));
+		addNode(new TheGenerator(assetManager, map));
+		addNode(new ThePowerGrid(assetManager, map));
+		addNode(new TheReservoir(assetManager, map));
+
+		
 		for(Edge e : edgeMap.values()) {
 			addActor(e);
 		}

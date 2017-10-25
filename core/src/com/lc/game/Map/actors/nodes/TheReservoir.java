@@ -6,18 +6,16 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.lc.game.AChristmasActor;
 import com.lc.game.Map.actors.Node;
 
-public class SunkenDormitory extends Node{
-	
-	public SunkenDormitory(AssetManager assetManager, AChristmasActor map) {
-		super(assetManager, "Sunken Dormitory", 1650, 1125, map);
+public class TheReservoir extends Node{
+
+	public TheReservoir(AssetManager assetManager, AChristmasActor map) {
+		super(assetManager, "The Reservoir", 1240, 865, map);
 	}
 
 	@Override
 	protected void initNeighbors() {
 		String[] nArray = { 
-				"The Glade",
-				"The Fountain",
-				"Sodden Lot"
+				"The Generator"
 			};
 		setNeighbors(Arrays.asList(nArray));
 	}
