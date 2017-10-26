@@ -1,7 +1,8 @@
 package com.lc.game.Map.actors;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
@@ -9,9 +10,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.lc.game.AChristmasActor;
 import com.lc.game.AssetList;
 import com.lc.game.LiarGame;
@@ -28,24 +26,29 @@ public abstract class Node extends AChristmasActor{
 	private GlyphLayout layout;
 	
 	private Texture nodeIcon;
-	private String name;
+	private String name, area;
 	
-	private boolean showName;
+	/**
+	 * showName: Player is mousing over the node; name is shown.
+	 * visible: Player can see the node but has not necessarily explored it yet.
+	 * explored: Player has visited the node before. These are always visible.
+	 */
+	private boolean showName, discovered, explored;
 	private static float nameScale = 0.3f;
 	private AChristmasActor followMe;
-	private InputListener nodeListener;
 	private int relX, relY;
 	
-	//Array of neighboring node names.
-	private List<String> neighbors;
+	//Array of neighboring node names with travel times.
+	private Map<String, Integer> neighbors;
 
 	//Array of outgoing edges, built from neighbors when map is generated.
 	private ArrayList<Edge> connections;
-
-	public Node(AssetManager assetManager, String name, int relX, int relY, AChristmasActor map) {
+	
+	public Node(AssetManager assetManager, String name, String area, int relX, int relY, AChristmasActor map) {
 		super(assetManager,(int) map.getX() + relX, (int)map.getY() + relY);
 		nodeIcon = getAssetManager().get(AssetList.MAP_NODE.toString());
 		this.name = name;
+		this.area = area;
 		setWidth(nodeIcon.getWidth());
 		setHeight(nodeIcon.getHeight());
 		updateHitBox();
@@ -58,38 +61,15 @@ public abstract class Node extends AChristmasActor{
 		font.getData().setScale(1.0f);
 
 		setShowName(false);
-		
-		nodeListener = new InputListener() {
-			@Override
-			public void enter (InputEvent event, float x, float y, int pointer, Actor fromActor) {
-				super.enter(event, y, y, pointer, fromActor);
-				if(pointer == -1) {
-					setShowName(true);
-					for(Edge e : connections) {
-						e.setDrawEdge(true);
-					}
-				}
-			}
-
-			@Override
-			public void exit (InputEvent event, float x, float y, int pointer, Actor toActor) {
-				super.exit(event, x, y, pointer, toActor);
-				if(pointer == -1) {
-					setShowName(false);
-					for(Edge e : connections) {
-						e.setDrawEdge(false);
-					}
-				}
-			}
-		};
-		addListener(nodeListener);
+		setDiscovered(false);
+		setExplored(false);
 		
 		this.relX = relX;
 		this.relY = relY;
-		followMe = map;
+		this.followMe = map;
 		
-		neighbors = new ArrayList<String>();
-		connections = new ArrayList<Edge>();
+		this.neighbors = new HashMap<String, Integer>();
+		this.connections = new ArrayList<Edge>();
 		initNeighbors();
 	}
 	
@@ -97,6 +77,7 @@ public abstract class Node extends AChristmasActor{
 
 	@Override
 	public void act(float delta) {
+		super.act(delta);
 		setX(followMe.getX() + relX);
 		setY(followMe.getY() + relY);
 		updateHitBox();
@@ -121,6 +102,15 @@ public abstract class Node extends AChristmasActor{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
 
 	public boolean isShowName() {
 		return showName;
@@ -129,16 +119,32 @@ public abstract class Node extends AChristmasActor{
 	public void setShowName(boolean showName) {
 		this.showName = showName;
 	}
+	
+	public boolean isDiscovered() {
+		return discovered;
+	}
+
+	public void setDiscovered(boolean discovered) {
+		this.discovered = discovered;
+	}
+
+	public boolean isExplored() {
+		return explored;
+	}
+
+	public void setExplored(boolean explored) {
+		this.explored = explored;
+	}
 
 	public ArrayList<Edge> getConnections() {
 		return connections;
 	}
 
-	public List<String> getNeighbors() {
+	public Map<String, Integer> getNeighbors() {
 		return neighbors;
 	}
 	
-	protected void setNeighbors(List<String> neighbors) {
+	protected void setNeighbors(Map<String, Integer> neighbors) {
 		this.neighbors = neighbors;
 	}
 }
