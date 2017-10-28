@@ -5,6 +5,8 @@ import java.util.HashMap;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AView;
 import com.lc.game.LiarGame;
@@ -12,11 +14,10 @@ import com.lc.game.Manager.StateManager;
 import com.lc.game.Map.actors.Edge;
 import com.lc.game.Map.actors.MapBackdrop;
 import com.lc.game.Map.actors.Node;
-import com.lc.game.Map.actors.nodes.SunkenDormitory;
-import com.lc.game.Map.actors.nodes.TheGlade;
+import com.lc.game.Scene.SceneView;
 import com.lc.game.Title.TitleView;
 
-public class MapView extends AView{
+public class MapView extends AView {
 
 	private MapBackdrop map;
 	private HashMap<String, Node> nodeMap;
@@ -27,28 +28,49 @@ public class MapView extends AView{
 	
 	public MapView(AssetManager assetManager, StateManager stateManager, Viewport viewport, Batch batch) {
 		super(assetManager, stateManager, viewport, batch);
-		map = new MapBackdrop(assetManager);
-		addActor(map);
+		setMap(new MapBackdrop(assetManager));
+		addActor(getMap());
 		
 		//Add nodes and edges.
 		nodeMap = new HashMap<String, Node>();
 		edgeMap = new HashMap<String, Edge>();
-		
-		addNode(new SunkenDormitory(assetManager, map));		
-		addNode(new TheGlade(assetManager, map));
-
-		for(Edge e : edgeMap.values()) {
-			addActor(e);
-		}
-		for(Node n : nodeMap.values()) {
-			addActor(n);
-		}
 	}
 
 	@Override
 	public void init() {
 		// TODO: Initialize map nodes according to visited/discovered status and map zoom level.
 		
+		for (Node n : stateManager.getMapState().getNodeMap().values()) {
+			final Node node = n;
+
+			if (n.isDiscovered()) {
+				n.addListener( new InputListener() {
+					
+					@Override
+					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+						
+						nodeClicked(node);
+						return super.touchDown(event, x, y, pointer, button);
+					}
+				});
+				nodeMap.put(n.getName(), n);
+			}
+			if (n.getName().equals(stateManager.getMapState().getCurrentNode())) {
+				LiarGame.moveCamera(n.getCenterX(), n.getCenterY());
+			}
+		}
+		for (Edge e : stateManager.getMapState().getEdgeMap().values()) {
+			if (nodeMap.values().contains(e.getE0()) && nodeMap.values().contains(e.getE1())) {
+				edgeMap.put(e.getId(), e);
+			}
+		}
+		
+		for(Edge e : edgeMap.values()) {
+			addActor(e);
+		}
+		for(Node n : nodeMap.values()) {
+			addActor(n);
+		}
 	}
 
 	@Override
@@ -81,9 +103,9 @@ public class MapView extends AView{
 		}
 		return false;
 	}
-	
-	private void addNode(Node newNode) {
-		for(String n : newNode.getNeighbors()) {
+
+	public void addNode(Node newNode) {
+		for(String n : newNode.getNeighbors().keySet()) {
 			Node neighbor = nodeMap.get(n);
 			if(neighbor != null) {
 				Edge newEdge = new Edge(neighbor.getAssetManager(), newNode, neighbor);
@@ -93,5 +115,18 @@ public class MapView extends AView{
 			}
 		}
 		nodeMap.put(newNode.getName(), newNode);
+	}
+	
+	public void nodeClicked(Node n) {
+		stateManager.getMapState().moveTo(n.getName());
+        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
+	}
+	
+	public MapBackdrop getMap() {
+		return map;
+	}
+
+	public void setMap(MapBackdrop map) {
+		this.map = map;
 	}
 }
