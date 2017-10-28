@@ -9,8 +9,10 @@ public enum AssetList {
 	BUTLER_FONT("fonts/butler.fnt", null),
 	LEARNING_FONT("fonts/learning_curve.fnt", null),
 	MAP("lolitsrice_placeholder.png", Texture.class),
-	MAP_NODE("node.png", Texture.class);
-	
+	MAP_NODE("node.png", Texture.class),
+	SCENE1TEST("scenes/Scene1Test.png", Texture.class),
+	SCENE2TEST("scenes/Scene2Test.png", Texture.class);
+
 	//Enum constructor and methods.
 	private String pathname;
     private Class<?> type;

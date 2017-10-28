@@ -9,7 +9,7 @@ import com.lc.game.Manager.StateManager;
 /**
  * Abstract extension of Stage class for different game views.
  */
-public abstract class AView extends Stage{
+public abstract class AView extends Stage {
 	
 	//Reference to asset manager for obtaining assets.
 	protected AssetManager assetManager;

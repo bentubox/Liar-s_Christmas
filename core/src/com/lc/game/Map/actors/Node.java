@@ -61,8 +61,8 @@ public abstract class Node extends AChristmasActor{
 		font.getData().setScale(1.0f);
 
 		setShowName(false);
-		setDiscovered(false);
-		setExplored(false);
+		setDiscovered(true);
+		setExplored(true);
 		
 		this.relX = relX;
 		this.relY = relY;
@@ -146,5 +146,5 @@ public abstract class Node extends AChristmasActor{
 	
 	protected void setNeighbors(Map<String, Integer> neighbors) {
 		this.neighbors = neighbors;
-	}
+	}	
 }

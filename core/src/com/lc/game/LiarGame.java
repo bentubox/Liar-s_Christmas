@@ -70,6 +70,7 @@ public class LiarGame extends ApplicationAdapter {
         loadAssets();
 
         stateManager = new StateManager();
+        stateManager.initStates(assetManager);
         viewManager = new ViewManager(assetManager, stateManager, viewport, batch);
         
         viewManager.createView(TitleView.class, assetManager, stateManager);
