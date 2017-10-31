@@ -14,6 +14,8 @@ public enum AssetList {
 	UISKINIMG("ui/uiskin.png", Texture.class),
 	UISKINATL("ui/uiskin.atlas", TextureAtlas.class),
 	
+	EVENTPLACEHOLDER("eventPlaceholder.gif", Texture.class),
+
 	SCENESODDENLOT("scenes/SceneSoddenLot.gif", Texture.class),
 	SCENESUNKENDORM("scenes/SceneSunkenDorm.gif", Texture.class),
 	SCENEMANGROVES("scenes/SceneMangroves.png", Texture.class),

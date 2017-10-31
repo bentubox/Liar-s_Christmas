@@ -26,7 +26,7 @@ public abstract class Node extends AChristmasActor{
 	private GlyphLayout layout;
 	
 	private Texture nodeIcon;
-	private String name, area;
+	private String name, area, description;
 	
 	/**
 	 * showName: Player is mousing over the node; name is shown.
@@ -44,11 +44,12 @@ public abstract class Node extends AChristmasActor{
 	//Array of outgoing edges, built from neighbors when map is generated.
 	private ArrayList<Edge> connections;
 	
-	public Node(AssetManager assetManager, String name, String area, int relX, int relY, AChristmasActor map) {
+	public Node(AssetManager assetManager, String name, String area, String descr, int relX, int relY, AChristmasActor map) {
 		super(assetManager,(int) map.getX() + relX, (int)map.getY() + relY);
 		nodeIcon = getAssetManager().get(AssetList.MAP_NODE.toString());
 		this.name = name;
 		this.area = area;
+		this.description = descr;
 		setWidth(nodeIcon.getWidth());
 		setHeight(nodeIcon.getHeight());
 		updateHitBox();
@@ -110,7 +111,14 @@ public abstract class Node extends AChristmasActor{
 	public void setArea(String area) {
 		this.area = area;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public boolean isShowName() {
 		return showName;

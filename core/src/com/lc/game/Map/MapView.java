@@ -66,12 +66,14 @@ public class MapView extends AView {
 
 	@Override
 	public void init() {
-		// TODO: Initialize map nodes according to visited/discovered status and map zoom level.
 		
+		//We make a mini-map from the map created in mapState based on what the player has seen.
 		for (Node n : stateManager.getMapState().getNodeMap().values()) {
 			final Node node = n;
 
 			if (n.isDiscovered()) {
+				
+				//Give each node the added functionality of registering mouse clicks.
 				n.addListener( new InputListener() {
 					
 					@Override
@@ -83,10 +85,14 @@ public class MapView extends AView {
 				});
 				nodeMap.put(n.getName(), n);
 			}
+			
+			//Move camera to zoom in on current node.
 			if (n.getName().equals(stateManager.getMapState().getCurrentNode())) {
 				LiarGame.moveCamera(n.getCenterX(), n.getCenterY());
 			}
 		}
+		
+		//Likewise, discovered edges are copied afresh from mapstate every time the mapview is pulled up.
 		for (Edge e : stateManager.getMapState().getEdgeMap().values()) {
 			if (nodeMap.values().contains(e.getE0()) && nodeMap.values().contains(e.getE1())) {
 				edgeMap.put(e.getId(), e);
@@ -132,6 +138,10 @@ public class MapView extends AView {
 		return false;
 	}
 
+	/**
+	 * This addNode works identically to the one in mapState. Could probably code this more efficiently.
+	 * @param newNode: The node being added to nodeMap.
+	 */
 	public void addNode(Node newNode) {
 		for(String n : newNode.getNeighbors().keySet()) {
 			Node neighbor = nodeMap.get(n);
@@ -144,9 +154,15 @@ public class MapView extends AView {
 		}
 		nodeMap.put(newNode.getName(), newNode);
 	}
-		
+	
+	/**
+	 * This is run when a node is clicked. Generate a list of options the player has for interacting with the node and display.
+	 * ATm, the player can only read info or move.
+	 * @param n: The node that the player just clicked
+	 */
 	public void nodeClicked(Node n) {
 		
+		//The info for only one node is visible at a time.
 		if (nodeOptionMenu != null) {
 			nodeOptionMenu.remove();
 		}
@@ -155,6 +171,7 @@ public class MapView extends AView {
 		
 		Label name = new Label("Node: " + n.getName(), skin);
 
+		//Display info about the node. Currently does nothing, but will eventually display the Description property of the node.
 		TextButton info = new TextButton("Information", skin);
 	    info.addListener(new ClickListener() {
 			@Override
@@ -168,6 +185,7 @@ public class MapView extends AView {
 	    nodeOptionMenu.add(info);
 	    nodeOptionMenu.row();
 	    
+	    //Detect whether the node clicked is one movement away from the player. If so, provide the move option and give the distance.
 	    boolean adjacent = false;
 	    int distance = 0;
 	    
@@ -181,7 +199,8 @@ public class MapView extends AView {
 	    	final Node node = n; 
 	    	
 	    	TextButton move = new TextButton("Move: (" + distance + ")", skin);
-	    		    	
+	    	
+	    	//Clicking move moves the player to the node and opens up the new node's sceneview.
 		    move.addListener(new ClickListener() {
 		    	
 		    	@Override
@@ -193,10 +212,23 @@ public class MapView extends AView {
 		    });
 		    
 		    nodeOptionMenu.add(move);
-
+		    nodeOptionMenu.row();
 	    }
+	    
+	    //The cancel button simply makes the option menu go away
+    	TextButton cancel = new TextButton("Cancel", skin);
+	    cancel.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				nodeOptionMenu.addAction(Actions.moveTo(0, 1000, .5f, Interpolation.pow5Out));
+			}
+	    });
+	    nodeOptionMenu.add(cancel);
+	    nodeOptionMenu.row();
+	    
+	    //Make the options appear off screen and move in.
 	    nodeOptionMenu.setPosition(0, 1000);
-	    nodeOptionMenu.addAction(Actions.moveTo(n.getX(), n.getCenterY() + 100,.5f,Interpolation.pow5Out));
+	    nodeOptionMenu.addAction(Actions.moveTo(n.getX(), n.getCenterY() + 100, .5f, Interpolation.pow5Out));
 	    
 		addActor(nodeOptionMenu);
 	}

@@ -6,7 +6,10 @@ import com.lc.game.Scene.SceneState;
 
 public class StateManager {
 	
+	//The mapState manages all map-related properties of the game.
 	private MapState mapState;
+	
+	//The sceneState manages all scene-related properties of the game
 	private SceneState sceneState;
 	
 	public StateManager() {

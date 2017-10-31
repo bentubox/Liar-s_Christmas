@@ -27,9 +27,11 @@ public class MapState {
 //	private AssetManager assetManager;
 //	private StateManager stateManager;
 	
+	//These two maps contain information about all nodes/edges in the game. They are initialized on game start.
 	private HashMap<String, Node> nodeMap;
 	private HashMap<String, Edge> edgeMap;
 	
+	//This is the string name of the node that the player is currently in.
 	private String currentNode;
 
 	public MapState(AssetManager assetManager, StateManager stateManager) {
@@ -41,18 +43,24 @@ public class MapState {
 		nodeMap = new HashMap<String, Node>();
 		edgeMap = new HashMap<String, Edge>();
 
+		//Read node and connection info from json file.
 		JsonReader json = new JsonReader();
 		JsonValue base = json.parse(Gdx.files.internal("MapInfo.json"));
 		
 		for (JsonValue node : base) {
+			
+			//Create node from info drawn from json file. First, compile neighbor data.
 			final Map<String, Integer> neighbors = new HashMap<String, Integer>();
 			
 			for (JsonValue neighbor : node.get("Connections")) {
 				neighbors.put(neighbor.getString("Neighbor"), neighbor.getInt("Distance"));
 			}
-			addNode(new Node(assetManager, node.getString("Name"), node.getString("Area"), node.getInt("XCoord"), 
-					node.getInt("YCoord"), map) {
+			
+			//Create the node and add it to nodemap. addNode also updates edgemap simultaneously.
+			addNode(new Node(assetManager, node.getString("Name"), node.getString("Area"), node.getString("Description"),
+					node.getInt("XCoord"), node.getInt("YCoord"), map) {
 				
+				//Upon initialization of new nodes, we give them all the same inputlistener.
 				{
 					addListener( new InputListener() {
 						@Override
@@ -115,9 +123,15 @@ public class MapState {
 			});
 		}
 
+		//This is run at the start of the game, so move to first node in the game. Change this later when saves are implemented.
 		moveTo("Sodden Lot");
 	}
 	
+	/**
+	 * This is run whenever a node is created. 
+	 * It adds the node to the map and adds all corresponding edges that have not already been added.
+	 * @param newNode: The node that is being added to nodeMap
+	 */
 	public void addNode(Node newNode) {
 		for(String n : newNode.getNeighbors().keySet()) {
 			Node neighbor = nodeMap.get(n);
@@ -131,6 +145,11 @@ public class MapState {
 		nodeMap.put(newNode.getName(), newNode);
 	}
 	
+	/**
+	 * This is run when the player moves from one node to another.
+	 * This only handles setting nodes as explored/discovered/current by the player. 
+	 * @param nodeName: The name of the node that the player is moving towards.
+	 */
 	public void moveTo(String nodeName) {
 		Node newNode = nodeMap.get(nodeName);
 		

@@ -7,10 +7,18 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.lc.game.AChristmasActor;
 import com.lc.game.Event.AEvent;
 
-public class Scene extends AChristmasActor{
+/**
+ * A Scene is the main view of the game that offers player-view of current node location.
+ * It contains a list of events of the node and holds the main point-and-click part of the game
+ * @author Zachary Tu
+ *
+ */
+public abstract class Scene extends AChristmasActor{
 	
+	//The image background of the scene.
 	private Texture backdrop;	
 	
+	//List of events currently in the scene
 	private ArrayList<AEvent> events;
 	
 	public Scene(AssetManager assetManager, String backdrop) {
@@ -27,7 +35,10 @@ public class Scene extends AChristmasActor{
 		
 		events = new ArrayList<AEvent>();
 		
+		init();
 	}
+	
+	public abstract void init();
 
 	@Override
     public void draw(Batch batch, float alpha) {
@@ -48,6 +59,12 @@ public class Scene extends AChristmasActor{
 
 	public void setEvents(ArrayList<AEvent> events) {
 		this.events = events;
+	}
+	
+	public void addEvent(AEvent... events) {
+		for (AEvent event : events) {
+			this.events.add(event);
+		}
 	}
 	
 }
