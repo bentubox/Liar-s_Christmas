@@ -4,11 +4,11 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.lc.game.AssetList;
 import com.lc.game.Scene.Scene;
 
-public class SunkenDormitoryScene extends Scene {
+public class Mangroves extends Scene {
 	
-	final static String backdrop = AssetList.SCENE2TEST.toString();
+	final static String backdrop = AssetList.SCENEMANGROVES.toString();
 	
-	public SunkenDormitoryScene(AssetManager assetManager) {
+	public Mangroves(AssetManager assetManager) {
 		super(assetManager, backdrop);
 	}
 }

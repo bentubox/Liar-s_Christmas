@@ -1,12 +1,17 @@
 package com.lc.game.Scene;
+import java.util.ArrayList;
+
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.lc.game.AChristmasActor;
+import com.lc.game.Event.AEvent;
 
 public class Scene extends AChristmasActor{
 	
 	private Texture backdrop;	
+	
+	private ArrayList<AEvent> events;
 	
 	public Scene(AssetManager assetManager, String backdrop) {
 		super(assetManager);
@@ -19,6 +24,9 @@ public class Scene extends AChristmasActor{
 		setWidth(this.backdrop.getWidth());
 		setHeight(this.backdrop.getHeight());
 		updateHitBox();
+		
+		events = new ArrayList<AEvent>();
+		
 	}
 
 	@Override
@@ -32,6 +40,14 @@ public class Scene extends AChristmasActor{
 
 	public void setBackdrop(Texture backdrop) {
 		this.backdrop = backdrop;
+	}
+
+	public ArrayList<AEvent> getEvents() {
+		return events;
+	}
+
+	public void setEvents(ArrayList<AEvent> events) {
+		this.events = events;
 	}
 	
 }

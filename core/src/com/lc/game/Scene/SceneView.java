@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AChristmasActor;
 import com.lc.game.AView;
 import com.lc.game.LiarGame;
+import com.lc.game.Event.AEvent;
 import com.lc.game.GlobalActors.Text;
 import com.lc.game.Manager.StateManager;
 import com.lc.game.Map.MapView;
@@ -24,9 +25,12 @@ public class SceneView extends AView{
 		
 		String currentNode = stateManager.getMapState().getCurrentNode();
 		
-		Scene currentScene = stateManager.getSceneState().getScenes().get(currentNode);
+		Scene currentScene = stateManager.getSceneState().getScene(currentNode);
 		if (currentScene != null) {
 			addActor(currentScene);
+			for (AEvent event : currentScene.getEvents()) {
+				addActor(event);
+			}
 		}
 		
 		mapOption = new Text(assetManager, "MAP", 150, 180);

@@ -2,13 +2,24 @@ package com.lc.game.Map;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AView;
+import com.lc.game.AssetList;
 import com.lc.game.LiarGame;
 import com.lc.game.Manager.StateManager;
 import com.lc.game.Map.actors.Edge;
@@ -23,6 +34,10 @@ public class MapView extends AView {
 	private HashMap<String, Node> nodeMap;
 	private HashMap<String, Edge> edgeMap;
 	
+	private Skin skin;
+	
+	private Table nodeOptionMenu;
+	
 	private static float MIN_ZOOM = 1.6f;
 	private static float MAX_ZOOM = 0.5f;
 	
@@ -30,6 +45,19 @@ public class MapView extends AView {
 		super(assetManager, stateManager, viewport, batch);
 		setMap(new MapBackdrop(assetManager));
 		addActor(getMap());
+		
+		//font things eventually. also, we will eventually load the skin in the state instead of the view.
+		/*FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/butler.fnt"));
+		FreeTypeFontGenerator.FreeTypeFontParameter params = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+		params.size = 24;
+		params.color = Color.BLACK;*/
+		BitmapFont font24 = new BitmapFont();
+	       
+		this.skin = new Skin();
+		this.skin.addRegions((TextureAtlas) getAssetManager().get(AssetList.UISKINATL.toString()));
+		this.skin.add("default-font", font24);
+		this.skin.load(Gdx.files.internal("ui/uiskin.json"));
 		
 		//Add nodes and edges.
 		nodeMap = new HashMap<String, Node>();
@@ -116,10 +144,61 @@ public class MapView extends AView {
 		}
 		nodeMap.put(newNode.getName(), newNode);
 	}
-	
+		
 	public void nodeClicked(Node n) {
-		stateManager.getMapState().moveTo(n.getName());
-        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
+		
+		if (nodeOptionMenu != null) {
+			nodeOptionMenu.remove();
+		}
+		
+		nodeOptionMenu = new Table();
+		
+		Label name = new Label("Node: " + n.getName(), skin);
+
+		TextButton info = new TextButton("Information", skin);
+	    info.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				
+			}
+	    });
+	    
+	    nodeOptionMenu.add(name);
+	    nodeOptionMenu.row();
+	    nodeOptionMenu.add(info);
+	    nodeOptionMenu.row();
+	    
+	    boolean adjacent = false;
+	    int distance = 0;
+	    
+	    for (String s : n.getNeighbors().keySet()) {
+	    	 if (stateManager.getMapState().getCurrentNode().equals(s)) {
+	 	    	adjacent = true;
+	 	    	distance = n.getNeighbors().get(s);
+	 	    }
+	    }
+	    if (adjacent) {
+	    	final Node node = n; 
+	    	
+	    	TextButton move = new TextButton("Move: (" + distance + ")", skin);
+	    		    	
+		    move.addListener(new ClickListener() {
+		    	
+		    	@Override
+				public void clicked(InputEvent event, float x, float y) {
+					stateManager.getMapState().moveTo(node.getName());
+			        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
+				}
+		    	
+		    });
+		    
+		    nodeOptionMenu.add(move);
+
+	    }
+	    nodeOptionMenu.setPosition(0, 1000);
+	    nodeOptionMenu.addAction(Actions.moveTo(n.getX(), n.getCenterY() + 100,.5f,Interpolation.pow5Out));
+	    
+		addActor(nodeOptionMenu);
 	}
 	
 	public MapBackdrop getMap() {
