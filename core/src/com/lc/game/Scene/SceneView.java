@@ -1,27 +1,20 @@
 package com.lc.game.Scene;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AChristmasActor;
 import com.lc.game.AView;
-import com.lc.game.AssetList;
 import com.lc.game.LiarGame;
 import com.lc.game.Event.AEvent;
 import com.lc.game.GlobalActors.Text;
 import com.lc.game.Manager.StateManager;
 import com.lc.game.Map.MapView;
+import com.lc.game.Notification.NotificationView;
 import com.lc.game.Title.TitleView;
 
 /**
@@ -34,32 +27,21 @@ public class SceneView extends AView{
 
 	//Temporary links to other modules for testing.
 	private AChristmasActor mapOption, titleOption;
-	
-	private Skin skin;
-	
-	//This option menu is modified by events and gives the player a custom set of options.
-	private Table eventOptionMenu;
-	
+		
 	public SceneView(AssetManager assetManager, StateManager stateManager, Viewport viewport, Batch batch) {
 		super(assetManager, stateManager, viewport, batch);
 		
-		BitmapFont font24 = new BitmapFont();
-	       
-		this.skin = new Skin();
-		this.skin.addRegions((TextureAtlas) getAssetManager().get(AssetList.UISKINATL.toString()));
-		this.skin.add("default-font", font24);
-		this.skin.load(Gdx.files.internal("ui/uiskin.json"));
-		
-		String currentNode = stateManager.getMapState().getCurrentNode();
+		String currentNode = stateManager.getMapManager().getCurrentNode();
 		
 		//Acquire the current scene from the stateManager.
-		Scene currentScene = stateManager.getSceneState().getScene(currentNode);
+		Scene currentScene = stateManager.getSceneManager().getScene(currentNode);
 		if (currentScene != null) {
 			addActor(currentScene);
 			
 			//Add all the events that are currently in the scene.
 			for (AEvent event : currentScene.getEvents()) {
 				
+				event.clearListeners();
 				final AEvent eventFin = event;
 				
 				//Add the functionality to all events to call functions on this view when clicked.
@@ -92,7 +74,6 @@ public class SceneView extends AView{
 	        }
 	    });
 		titleOption.setScale(0.5f);
-		
 		addActor(mapOption);
 		addActor(titleOption);
 		
@@ -100,34 +81,21 @@ public class SceneView extends AView{
 
 	@Override
 	public void init() {
-		
+		//TEMPORARY. atm, scene switch will do an extra check to see if any notifications were missed.
+		//Normally, the game attempts to display notifications upon their creation.
+		if (stateManager.getNotificationManager().getLastNotification() != null) {
+			stateManager.getNotificationManager().setBackground(this);
+            LiarGame.getViewManager().createView(NotificationView.class, getAssetManager(), getStateManager());
+		}
 	}
 	
 	/**
 	 * When an event is clicked, run its on-click method passing it this view
+	 * Events will not process clicks if another event's menu is showing
 	 * @param event: The event that was clicked by the player
 	 */
 	public void eventClicked(AEvent event) {
-		event.onClick(this);
-	}
-
-	/**
-	 * When an event or anything else pops an option menu, it must call this function on the sceneView
-	 * @param table: The option menu that will appear.
-	 */
-	public void produceOptions(Table table) {
-		if (eventOptionMenu != null) {
-			eventOptionMenu.remove();
-		}
-		
-		eventOptionMenu = table;
-		
-		if (eventOptionMenu != null) {
-			eventOptionMenu.setPosition(0, 1000);
-			eventOptionMenu.addAction(Actions.moveTo(500, 500,.5f,Interpolation.pow5Out));
-			    
-			addActor(eventOptionMenu);
-		}
+		event.onClick(stateManager);
 	}
 	
 	@Override
@@ -147,20 +115,5 @@ public class SceneView extends AView{
         }
 
         return isHandled;
-    }
-
-	public Skin getSkin() {
-		return skin;
-	}
-
-	public Table getNodeOptionMenu() {
-		return eventOptionMenu;
-	}
-
-	public void setNodeOptionMenu(Table eventOptionMenu) {
-		this.eventOptionMenu = eventOptionMenu;
-	}
-	
-	
-
+    }	
 }

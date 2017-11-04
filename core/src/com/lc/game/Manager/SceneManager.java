@@ -1,9 +1,12 @@
-package com.lc.game.Scene;
+package com.lc.game.Manager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.lc.game.Manager.StateManager;
+import com.lc.game.Event.AEvent;
+import com.lc.game.GlobalActors.Player.APlayer;
+import com.lc.game.Scene.Scene;
 import com.lc.game.Scene.scenes.*;
 
 /**
@@ -12,12 +15,15 @@ import com.lc.game.Scene.scenes.*;
  * @author Zachary Tu
  *
  */
-public class SceneState {
+public class SceneManager {
 
+	public StateManager stateManager;
+	
 	//This maps to each node name the scene that appears there.
 	private HashMap<String, Scene> scenes;
 	
-	public SceneState(AssetManager assetManager, StateManager stateManager) {
+	public SceneManager(AssetManager assetManager, StateManager stateManager) {
+		this.stateManager = stateManager;
 		
 		scenes = new HashMap<String, Scene>();
 		
@@ -45,4 +51,32 @@ public class SceneState {
 		this.scenes = scenes;
 	}
 	
+	public void eventTimePass(int elapse) {
+		
+		for (Scene scene : scenes.values()) {
+			
+			final ArrayList<AEvent> events = new ArrayList<AEvent>();
+			for (AEvent event: scene.getEvents()) {
+				events.add(event);
+			}
+			
+			for (AEvent event : events) {
+				event.onTimePass(stateManager, elapse);
+			}
+		}
+	}
+	
+	public void eventOnMove(String start, String end, APlayer schmuck) {
+		for (Scene scene : scenes.values()) {
+			
+			final ArrayList<AEvent> events = new ArrayList<AEvent>();
+			for (AEvent event: scene.getEvents()) {
+				events.add(event);
+			}
+			
+			for (AEvent event : events) {
+				event.onMove(start, end, schmuck, stateManager);
+			}
+		}
+	}
 }

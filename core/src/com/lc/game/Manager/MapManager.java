@@ -1,4 +1,4 @@
-package com.lc.game.Map;
+package com.lc.game.Manager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.lc.game.Manager.StateManager;
 import com.lc.game.Map.actors.Edge;
 import com.lc.game.Map.actors.MapBackdrop;
 import com.lc.game.Map.actors.Node;
@@ -22,21 +21,21 @@ import com.lc.game.Map.actors.Node;
  * @author Zachary Tu
  * Manager for managing node and edges in the map
  */
-public class MapState {
+public class MapManager {
 	
 //	private AssetManager assetManager;
-//	private StateManager stateManager;
+	private StateManager stateManager;
 	
 	//These two maps contain information about all nodes/edges in the game. They are initialized on game start.
 	private HashMap<String, Node> nodeMap;
 	private HashMap<String, Edge> edgeMap;
 	
 	//This is the string name of the node that the player is currently in.
-	private String currentNode;
+	private String currentNode, safeNode;
 
-	public MapState(AssetManager assetManager, StateManager stateManager) {
+	public MapManager(AssetManager assetManager, StateManager stateManager) {
 //		this.assetManager = assetManager;
-//		this.stateManager = stateManager;
+		this.stateManager = stateManager;
 		MapBackdrop map = new MapBackdrop(assetManager);
 		
 		//Add nodes and edges.
@@ -125,6 +124,7 @@ public class MapState {
 
 		//This is run at the start of the game, so move to first node in the game. Change this later when saves are implemented.
 		moveTo("Sodden Lot");
+		safeNode = "Sunken Dormitory";
 	}
 	
 	/**
@@ -156,6 +156,8 @@ public class MapState {
 		if (newNode != null) {
 			newNode.setDiscovered(true);
 			newNode.setExplored(true);
+			
+			stateManager.getSceneManager().eventOnMove(currentNode, nodeName, stateManager.getPlayer());
 			
 			currentNode = nodeName;
 			
@@ -192,5 +194,13 @@ public class MapState {
 
 	public void setCurrentNode(String currentNode) {
 		this.currentNode = currentNode;
+	}
+
+	public String getSafeNode() {
+		return safeNode;
+	}
+
+	public void setSafeNode(String safeNode) {
+		this.safeNode = safeNode;
 	}
 }

@@ -68,7 +68,7 @@ public class MapView extends AView {
 	public void init() {
 		
 		//We make a mini-map from the map created in mapState based on what the player has seen.
-		for (Node n : stateManager.getMapState().getNodeMap().values()) {
+		for (Node n : stateManager.getMapManager().getNodeMap().values()) {
 			final Node node = n;
 
 			if (n.isDiscovered()) {
@@ -87,13 +87,13 @@ public class MapView extends AView {
 			}
 			
 			//Move camera to zoom in on current node.
-			if (n.getName().equals(stateManager.getMapState().getCurrentNode())) {
+			if (n.getName().equals(stateManager.getMapManager().getCurrentNode())) {
 				LiarGame.moveCamera(n.getCenterX(), n.getCenterY());
 			}
 		}
 		
 		//Likewise, discovered edges are copied afresh from mapstate every time the mapview is pulled up.
-		for (Edge e : stateManager.getMapState().getEdgeMap().values()) {
+		for (Edge e : stateManager.getMapManager().getEdgeMap().values()) {
 			if (nodeMap.values().contains(e.getE0()) && nodeMap.values().contains(e.getE1())) {
 				edgeMap.put(e.getId(), e);
 			}
@@ -169,7 +169,8 @@ public class MapView extends AView {
 		
 		nodeOptionMenu = new Table();
 		
-		Label name = new Label("Node: " + n.getName(), skin);
+		Label name = new Label("Node: " + n.getName() + ". " + stateManager.getTimeManager().getTimeLeft() + "  turns left.",
+				skin);
 
 		//Display info about the node. Currently does nothing, but will eventually display the Description property of the node.
 		TextButton info = new TextButton("Information", skin);
@@ -190,13 +191,14 @@ public class MapView extends AView {
 	    int distance = 0;
 	    
 	    for (String s : n.getNeighbors().keySet()) {
-	    	 if (stateManager.getMapState().getCurrentNode().equals(s)) {
+	    	 if (stateManager.getMapManager().getCurrentNode().equals(s)) {
 	 	    	adjacent = true;
 	 	    	distance = n.getNeighbors().get(s);
 	 	    }
 	    }
 	    if (adjacent) {
-	    	final Node node = n; 
+	    	final Node node = n;
+	    	final int dist = distance;
 	    	
 	    	TextButton move = new TextButton("Move: (" + distance + ")", skin);
 	    	
@@ -205,7 +207,9 @@ public class MapView extends AView {
 		    	
 		    	@Override
 				public void clicked(InputEvent event, float x, float y) {
-					stateManager.getMapState().moveTo(node.getName());
+		    		
+		    		stateManager.getTimeManager().timeIncrement(-dist);
+					stateManager.getMapManager().moveTo(node.getName());
 			        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
 				}
 		    	
