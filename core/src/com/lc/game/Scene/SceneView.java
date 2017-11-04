@@ -76,7 +76,6 @@ public class SceneView extends AView{
 		titleOption.setScale(0.5f);
 		addActor(mapOption);
 		addActor(titleOption);
-		
 	}
 
 	@Override
@@ -87,6 +86,8 @@ public class SceneView extends AView{
 			stateManager.getNotificationManager().setBackground(this);
             LiarGame.getViewManager().createView(NotificationView.class, getAssetManager(), getStateManager());
 		}
+		LiarGame.resetCamera();
+
 	}
 	
 	/**

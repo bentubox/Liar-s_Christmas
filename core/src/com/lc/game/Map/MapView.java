@@ -207,10 +207,9 @@ public class MapView extends AView {
 		    	
 		    	@Override
 				public void clicked(InputEvent event, float x, float y) {
-		    		
 		    		stateManager.getTimeManager().timeIncrement(-dist);
 					stateManager.getMapManager().moveTo(node.getName());
-			        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
+		    		LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
 				}
 		    	
 		    });

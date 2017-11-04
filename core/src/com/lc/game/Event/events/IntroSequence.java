@@ -17,7 +17,7 @@ public class IntroSequence extends AEvent{
 	private final static int X = 0;
 	private final static int Y = 0;
 	private final static String image = AssetList.EVENTPLACEHOLDER.toString();
-	private final static String name = "Your Sinking Car.";
+	private final static String name = "";
 
 	public IntroSequence(AssetManager assetManager) {
 		super(assetManager, name, X, Y, (Texture) assetManager.get(image));

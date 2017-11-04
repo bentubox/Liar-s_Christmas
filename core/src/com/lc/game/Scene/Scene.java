@@ -25,7 +25,6 @@ public abstract class Scene extends AChristmasActor{
 		super(assetManager);
 		this.backdrop = getAssetManager().get(backdrop);
 		this.backdrop.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-		
 		setX(0);
 		setY(0);
 		
@@ -42,7 +41,7 @@ public abstract class Scene extends AChristmasActor{
 
 	@Override
     public void draw(Batch batch, float alpha) {
-        batch.draw(backdrop, getX(), getY());
+        batch.draw(backdrop, getX(), getY(), backdrop.getWidth() * 1.5f, backdrop.getHeight() * 1.5f);
     }
 	
 	public Texture getBackdrop() {

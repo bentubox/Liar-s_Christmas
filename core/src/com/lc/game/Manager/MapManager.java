@@ -169,6 +169,8 @@ public class MapManager {
 					}
 				}
 			}
+			
+//	        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
 		}
 	}
 
