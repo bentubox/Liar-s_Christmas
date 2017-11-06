@@ -11,42 +11,37 @@ import com.lc.game.AssetList;
 import com.lc.game.Event.AEvent;
 import com.lc.game.Manager.StateManager;
 
-public class WarpSoddenLotSunkenDorm extends AEvent{
+public class StandardFlavorClick extends AEvent{
 
-	private final static int X = 900;
-	private final static int Y = 300;
 	private final static String image = AssetList.EVENTPLACEHOLDER.toString();
-	private final static String name = "A Familiar Looking Building.";
+	private String name;
+	private String text;
 
-	public WarpSoddenLotSunkenDorm(AssetManager assetManager) {
-		super(assetManager, name, X, Y, (Texture) assetManager.get(image));
-
+	public StandardFlavorClick(AssetManager assetManager, int x, int y, String name, String text) {
+		super(assetManager, name, x, y, (Texture) assetManager.get(image));
+		this.name = name;
+		this.text = text;
 	}
 
 	@Override
 	public void onClick(final StateManager stateManager) {
 		Table notif = new Table();
-		Label content = new Label("Travel here?",stateManager.getSkin());
-		TextButton yes = new TextButton("Yea", stateManager.getSkin());
-		yes.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				stateManager.getMapManager().moveTo("Sunken Dormitory");
-				stateManager.getNotificationManager().nextNotification();
-			}
-	    });
-		TextButton no = new TextButton("Nah", stateManager.getSkin());
-		no.addListener(new ClickListener() {
+		
+		Label title = new Label(name, stateManager.getSkin());
+		Label content = new Label(text, stateManager.getSkin());
+		
+		TextButton next = new TextButton("Next", stateManager.getSkin());
+		next.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				stateManager.getNotificationManager().nextNotification();
 			}
 	    });
+		notif.add(title);
+		notif.row();
 		notif.add(content);
 		notif.row();
-		notif.add(yes);
-		notif.row();
-		notif.add(no);
+		notif.add(next);
 		stateManager.getNotificationManager().addNotification(notif);
 	}
 	

@@ -50,6 +50,8 @@ public class StateManager {
 		sceneManager  = new SceneManager(assetManager, this);
 		mapManager = new MapManager(assetManager, this);
 		timeManager  = new TimeManager(assetManager, this);
+		
+		mapManager.moveTo("Sodden Lot");
 	}
 	
 	public Skin getSkin() {

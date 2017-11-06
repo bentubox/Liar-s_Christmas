@@ -33,7 +33,9 @@ public abstract class AEvent extends AChristmasActor {
 	}
 	
 	//This will be run when the event is clicked in the sceneview
-	public abstract void onClick(final StateManager stateManager);
+	public void onClick(final StateManager stateManager) {
+		
+	}
 
 	//This is run every time a moment passes in the game.
 	public void onTimePass(StateManager stateManager, int elapse) {

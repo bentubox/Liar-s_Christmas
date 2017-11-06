@@ -12,9 +12,11 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.lc.game.LiarGame;
 import com.lc.game.Map.actors.Edge;
 import com.lc.game.Map.actors.MapBackdrop;
 import com.lc.game.Map.actors.Node;
+import com.lc.game.Scene.SceneView;
 
 /**
  * 
@@ -23,7 +25,7 @@ import com.lc.game.Map.actors.Node;
  */
 public class MapManager {
 	
-//	private AssetManager assetManager;
+	private AssetManager assetManager;
 	private StateManager stateManager;
 	
 	//These two maps contain information about all nodes/edges in the game. They are initialized on game start.
@@ -34,7 +36,7 @@ public class MapManager {
 	private String currentNode, safeNode;
 
 	public MapManager(AssetManager assetManager, StateManager stateManager) {
-//		this.assetManager = assetManager;
+		this.assetManager = assetManager;
 		this.stateManager = stateManager;
 		MapBackdrop map = new MapBackdrop(assetManager);
 		
@@ -122,8 +124,6 @@ public class MapManager {
 			});
 		}
 
-		//This is run at the start of the game, so move to first node in the game. Change this later when saves are implemented.
-		moveTo("Sodden Lot");
 		safeNode = "Sunken Dormitory";
 	}
 	
@@ -170,8 +170,21 @@ public class MapManager {
 				}
 			}
 			
-//	        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
+			//When we add a fade out/in transition, it will probably be here.
+			
+	        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
 		}
+	}
+	
+	/**
+	 * This returns the distance from the current node to the input node.
+	 * Eventually, make this method account for cost-modifiers.
+	 * This should return null if there is no edge to dest
+	 * @param dest: the node we want to find the magnitude of the edge between current
+	 * @return
+	 */
+	public int distanceTo(String dest) {
+		return nodeMap.get(currentNode).getNeighbors().get(dest);		
 	}
 
 	public HashMap<String, Node> getNodeMap() {

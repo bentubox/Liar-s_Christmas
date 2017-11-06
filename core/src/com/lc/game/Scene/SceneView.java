@@ -3,8 +3,11 @@ package com.lc.game.Scene;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AChristmasActor;
@@ -26,9 +29,12 @@ import com.lc.game.Title.TitleView;
 public class SceneView extends AView{
 
 	//Temporary links to other modules for testing.
-	private AChristmasActor mapOption, titleOption;
-		
-	public SceneView(AssetManager assetManager, StateManager stateManager, Viewport viewport, Batch batch) {
+	private AChristmasActor mapOption;
+	
+	//panel for info. Displays 
+	private Table infoPanel;
+	
+	public SceneView(AssetManager assetManager, final StateManager stateManager, Viewport viewport, Batch batch) {
 		super(assetManager, stateManager, viewport, batch);
 		
 		String currentNode = stateManager.getMapManager().getCurrentNode();
@@ -52,6 +58,18 @@ public class SceneView extends AView{
 						eventClicked(eventFin);
 						return true;
 					}
+					
+					@Override
+					public void enter (InputEvent event, float x, float y, int pointer, Actor fromActor) {
+						super.enter(event, y, y, pointer, fromActor);
+						infoPanel.add(new Label(eventFin.getName(), stateManager.getSkin()));
+					}
+
+					@Override
+					public void exit (InputEvent event, float x, float y, int pointer, Actor toActor) {
+						super.exit(event, x, y, pointer, toActor);
+						infoPanel.clear();
+					}
 				});
 				
 				addActor(event);
@@ -59,7 +77,6 @@ public class SceneView extends AView{
 		}
 		
 		mapOption = new Text(assetManager, "MAP", 150, 180);
-		titleOption = new Text(assetManager, "TITLE", 150, 220);
 
 		mapOption.addListener(new ClickListener() {
 	        public void clicked(InputEvent e, float x, float y) {
@@ -68,14 +85,10 @@ public class SceneView extends AView{
 	    });
 		mapOption.setScale(0.5f);
 		
-		titleOption.addListener(new ClickListener() {
-	        public void clicked(InputEvent e, float x, float y) {
-	            LiarGame.getViewManager().createView(TitleView.class, getAssetManager(), getStateManager());
-	        }
-	    });
-		titleOption.setScale(0.5f);
+		infoPanel = new Table();
+		infoPanel.setPosition(1500, 100);
+		addActor(infoPanel);
 		addActor(mapOption);
-		addActor(titleOption);
 	}
 
 	@Override

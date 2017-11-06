@@ -32,6 +32,17 @@ public class SceneManager {
 		scenes.put("The Fountain", new Fountain(assetManager));
 		scenes.put("The Mangroves", new Mangroves(assetManager));
 		scenes.put("The Glade", new Glade(assetManager));
+		
+		scenes.put("The Trough", new Trough(assetManager));
+		scenes.put("The Clot", new Clot(assetManager));
+		scenes.put("The Sluice", new Sluice(assetManager));
+		scenes.put("The Sewer", new Sewer(assetManager));
+		
+		scenes.put("Unclean Dormitory", new UncleanDormitory(assetManager));
+		scenes.put("The Heap", new Heap(assetManager));
+		scenes.put("The Vault", new Vault(assetManager));
+		scenes.put("Reclamation Plant", new ReclamationPlant(assetManager));
+		scenes.put("Unused Rooms", new UnusedRooms(assetManager));
 	}
 
 	public Scene getScene(String name) {

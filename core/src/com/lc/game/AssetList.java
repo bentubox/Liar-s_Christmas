@@ -20,7 +20,16 @@ public enum AssetList {
 	SCENESUNKENDORM("scenes/SceneSunkenDorm.gif", Texture.class),
 	SCENEMANGROVES("scenes/SceneMangroves.png", Texture.class),
 	SCENEFOUNTAIN("scenes/SceneFountain.gif", Texture.class),	
-	SCENEGLADE("scenes/SceneGlade.png", Texture.class);
+	SCENEGLADE("scenes/SceneGlade.png", Texture.class),
+	SCENESEWER("scenes/SceneSewer.jpg", Texture.class),
+	SCENETROUGH("scenes/SceneTrough.gif", Texture.class),
+	SCENESLUICE("scenes/SceneSluice.png", Texture.class),
+	SCENECLOT("scenes/SceneClot.jpg", Texture.class),
+	SCENEUNCLEANDORM("scenes/SceneUncleanDorm.jpg", Texture.class),
+	SCENEHEAP("scenes/SceneHeap.gif", Texture.class),
+	SCENEVAULT("scenes/SceneVault.gif", Texture.class),
+	SCENERECLAMATIONPLANT("scenes/SceneReclamationPlant.jpg", Texture.class),
+	SCENEUNUSEDROOMS("scenes/SceneUnusedRooms.png", Texture.class);
 	
 	//Enum constructor and methods.
 	private String pathname;

@@ -2,12 +2,9 @@ package com.lc.game.Map;
 
 import java.util.HashMap;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -19,13 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lc.game.AView;
-import com.lc.game.AssetList;
 import com.lc.game.LiarGame;
 import com.lc.game.Manager.StateManager;
 import com.lc.game.Map.actors.Edge;
 import com.lc.game.Map.actors.MapBackdrop;
 import com.lc.game.Map.actors.Node;
-import com.lc.game.Scene.SceneView;
 import com.lc.game.Title.TitleView;
 
 public class MapView extends AView {
@@ -45,19 +40,8 @@ public class MapView extends AView {
 		super(assetManager, stateManager, viewport, batch);
 		setMap(new MapBackdrop(assetManager));
 		addActor(getMap());
-		
-		//font things eventually. also, we will eventually load the skin in the state instead of the view.
-		/*FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/butler.fnt"));
-		FreeTypeFontGenerator.FreeTypeFontParameter params = new FreeTypeFontGenerator.FreeTypeFontParameter();
-
-		params.size = 24;
-		params.color = Color.BLACK;*/
-		BitmapFont font24 = new BitmapFont();
 	       
-		this.skin = new Skin();
-		this.skin.addRegions((TextureAtlas) getAssetManager().get(AssetList.UISKINATL.toString()));
-		this.skin.add("default-font", font24);
-		this.skin.load(Gdx.files.internal("ui/uiskin.json"));
+		this.skin = stateManager.getSkin();
 		
 		//Add nodes and edges.
 		nodeMap = new HashMap<String, Node>();
@@ -196,6 +180,7 @@ public class MapView extends AView {
 	 	    	distance = n.getNeighbors().get(s);
 	 	    }
 	    }
+	    
 	    if (adjacent) {
 	    	final Node node = n;
 	    	final int dist = distance;
@@ -209,7 +194,6 @@ public class MapView extends AView {
 				public void clicked(InputEvent event, float x, float y) {
 		    		stateManager.getTimeManager().timeIncrement(-dist);
 					stateManager.getMapManager().moveTo(node.getName());
-		    		LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
 				}
 		    	
 		    });
