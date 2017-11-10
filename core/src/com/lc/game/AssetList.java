@@ -16,8 +16,11 @@ public enum AssetList {
 	PORTRAIT_PLACEHOLDER_RITA("portrait/ref_placeholder_rita.jpg", Texture.class),
 	PORTRAIT_PLACEHOLDER_ROBBART("portrait/ref_placeholder_robbart.jpg", Texture.class),
 	PORTRAIT_PLACEHOLDER_TATE("portrait/ref_placeholder_tate.jpg", Texture.class),
-	SCRIPT_TEST("script/test_0.script", null);
-	
+	SCRIPT_TEST("script/test_0.script", null),
+
+	SCENE1TEST("scenes/Scene1Test.png", Texture.class),
+	SCENE2TEST("scenes/Scene2Test.png", Texture.class);
+
 	//Enum constructor and methods.
 	private String pathname;
     private Class<?> type;
