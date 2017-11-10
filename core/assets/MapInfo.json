@@ -1,178 +1,323 @@
 [
 	{
 		"Name": "Sodden Lot", "Area": "The Quagmire", "xCoord": 1720, "yCoord": 1100, 
+		"Description": "",
 		"Connections": [{"Neighbor": "Sunken Dormitory", "Distance": 0}]
 	},
 	{
 		"Name": "Sunken Dormitory", "Area": "The Quagmire", "xCoord": 1650, "yCoord": 1125, 
+		"Description": "",
 		"Connections": [{"Neighbor": "Sodden Lot", "Distance": 0}, {"Neighbor": "The Fountain", "Distance": 0}, {"Neighbor": "The Glade", "Distance": 5}]
 	},
 	{
 		"Name": "The Fountain", "Area": "The Quagmire", "xCoord": 1600, "yCoord": 1125, 
-		"Connections": [{"Neighbor": "The Mangroves", "Distance": 0}, {"Neighbor": "Sunken Dormitory", "Distance": 0}, {"Neighbor": "The Trough", "Distance": 2}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Mangroves", "Distance": 0}, {"Neighbor": "Sunken Dormitory", "Distance": 0}, {"Neighbor": "The Trough", "Distance": 3}]
 	},
 	{
 		"Name": "The Mangroves", "Area": "The Quagmire", "xCoord": 1625, "yCoord": 1050, 
-		"Connections": [{"Neighbor": "The Fountain", "Distance": 0}, {"Neighbor": "The Overlook", "Distance": 2}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Fountain", "Distance": 0}, {"Neighbor": "The Overlook", "Distance": 3}]
 	},
 	{
 		"Name": "The Glade", "Area": "The Glade", "xCoord": 1700, "yCoord": 950, 
+		"Description": "",
 		"Connections": [{"Neighbor": "Sunken Dormitory", "Distance": 5}]
 	},
 	{
 		"Name": "The Trough", "Area": "The Gutter", "xCoord": 1500, "yCoord": 1125, 
-		"Connections": [{"Neighbor": "The Fountain", "Distance": 2}, {"Neighbor": "The Sluice", "Distance": 0}, {"Neighbor": "The Sewer", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Fountain", "Distance": 3}, {"Neighbor": "The Sluice", "Distance": 0}, {"Neighbor": "The Sewer", "Distance": 0}]
 	},
 	{
 		"Name": "The Sluice", "Area": "The Gutter", "xCoord": 1550, "yCoord": 1175, 
-		"Connections": [{"Neighbor": "The Trough", "Distance": 0}, {"Neighbor": "Befouled Dormitory", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Trough", "Distance": 0}, {"Neighbor": "The Clot", "Distance": 0}]
 	},
 	{
-		"Name": "Befouled Dormitory", "Area": "The Gutter", "xCoord": 1500, "yCoord": 1200, 
+		"Name": "The Clot", "Area": "The Gutter", "xCoord": 1500, "yCoord": 1200, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Sluice", "Distance": 0}]
 	},
 	{
 		"Name": "The Sewer", "Area": "The Gutter", "xCoord": 1500, "yCoord": 1060, 
-		"Connections": [{"Neighbor": "The Trough", "Distance": 0}, {"Neighbor": "Unclean Dormitory", "Distance": 2}]
-	},
-	{
-		"Name": "The Clot", "Area": "The Gutter", "xCoord": 1450, "yCoord": 1250, 
-		"Connections": [{"Neighbor": "Befouled Dormitory", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Trough", "Distance": 0}, {"Neighbor": "Unclean Dormitory", "Distance": 3}]
 	},
 	{
 		"Name": "Unclean Dormitory", "Area": "The Middens", "xCoord": 1430, "yCoord": 1050, 
-		"Connections": [{"Neighbor": "The Sewer", "Distance": 2}, {"Neighbor": "The Heap", "Distance": 0}, {"Neighbor": "Reclamation Plant", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Sewer", "Distance": 3}, {"Neighbor": "The Heap", "Distance": 0}, {"Neighbor": "Reclamation Plant", "Distance": 0}]
 	},
 	{
 		"Name": "The Heap", "Area": "The Middens", "xCoord": 1365, "yCoord": 1100, 
+		"Description": "",
 		"Connections": [{"Neighbor": "Unclean Dormitory", "Distance": 0}, {"Neighbor": "Unused Rooms", "Distance": 0}, {"Neighbor": "The Vault", "Distance": 0}]
 	},
 	{
 		"Name": "The Vault", "Area": "The Middens", "xCoord": 1300, "yCoord": 1075, 
-		"Connections": [{"Neighbor": "The Heap", "Distance": 0}, {"Neighbor": "Reclamation Plant", "Distance": 0}, {"Neighbor": "The Stomach", "Distance": 2}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Heap", "Distance": 0}, {"Neighbor": "Reclamation Plant", "Distance": 0}, {"Neighbor": "The Stomach", "Distance": 3}]
 	},
 	{
 		"Name": "Reclamation Plant", "Area": "The Middens", "xCoord": 1340, "yCoord": 1000, 
-		"Connections": [{"Neighbor": "Unclean Dormitory", "Distance": 0}, {"Neighbor": "The Vault", "Distance": 0}, {"Neighbor": "The Canal", "Distance": 2}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Unclean Dormitory", "Distance": 0}, {"Neighbor": "The Vault", "Distance": 0}, {"Neighbor": "The Canal", "Distance": 3}]
 	},
 	{
 		"Name": "Unused Rooms", "Area": "The Middens", "xCoord": 1365, "yCoord": 1185, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Heap", "Distance": 0}]
 	},
 	{
 		"Name": "The Stomach", "Area": "The Fleshfields", "xCoord": 1200, "yCoord": 1085, 
-		"Connections": [{"Neighbor": "The Vault", "Distance": 2}, {"Neighbor": "The Spleen", "Distance": 0}, {"Neighbor": "The Liver", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Vault", "Distance": 3}, {"Neighbor": "The Spleen", "Distance": 0}, {"Neighbor": "The Liver", "Distance": 0}]
 	},
 	{
 		"Name": "The Liver", "Area": "The Fleshfields", "xCoord": 1245, "yCoord": 1185, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Spleen", "Distance": 0}, {"Neighbor": "The Stomach", "Distance": 0}]
 	},
 	{
 		"Name": "The Spleen", "Area": "The Fleshfields", "xCoord": 1175, "yCoord": 1140, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Liver", "Distance": 0}, {"Neighbor": "The Stomach", "Distance": 0}, {"Neighbor": "The Brain", "Distance": 0}]
 	},
 	{
 		"Name": "The Brain", "Area": "The Fleshfields", "xCoord": 1100, "yCoord": 1115, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Spleen", "Distance": 0}]
 	},
 	{
 		"Name": "The Overlook", "Area": "The Chasm", "xCoord": 1565, "yCoord": 965, 
-		"Connections": [{"Neighbor": "The Mangroves", "Distance": 2}, {"Neighbor": "Founder's Court", "Distance": 0}, {"Neighbor": "The Precipice", "Distance": 3}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Mangroves", "Distance": 3}, {"Neighbor": "Founder's Court", "Distance": 0}, {"Neighbor": "The Precipice", "Distance": 3}]
 	},
 	{
 		"Name": "Founder's Court", "Area": "The Chasm", "xCoord": 1500, "yCoord": 920, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Overlook", "Distance": 0}, {"Neighbor": "Outside the Gate", "Distance": 0}]
 	},
 	{
 		"Name": "Outside the Gate", "Area": "The Chasm", "xCoord": 1450, "yCoord": 900, 
-		"Connections": [{"Neighbor": "Inside the Gate", "Distance": 2}, {"Neighbor": "Founder's Court", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Inside the Gate", "Distance": 3}, {"Neighbor": "Founder's Court", "Distance": 0}]
 	},
 	{
-		"Name": "Inside the Gate", "Area": "The Chasm", "xCoord": 1420, "yCoord": 875, 
-		"Connections": [{"Neighbor": "Outside the Gate", "Distance": 2}, {"Neighbor": "Central Court", "Distance": 0}]
+		"Name": "Inside the Gate", "Area": "The Courtyard", "xCoord": 1420, "yCoord": 875, 
+		"Description": "",
+		"Connections": [{"Neighbor": "Outside the Gate", "Distance": 3}, {"Neighbor": "Central Court", "Distance": 0}, {"Neighbor": "The Ramparts", "Distance": 0}, {"Neighbor": "The Sea Wall", "Distance": 0}]
 	},
 	{
-		"Name": "Central Court", "Area": "The Courtyard", "xCoord": 1330, "yCoord": 845, 
+		"Name": "The Ramparts", "Area": "The Courtyard", "xCoord": 1355, "yCoord": 910, 
+		"Description": "",
 		"Connections": [{"Neighbor": "Inside the Gate", "Distance": 0}]
 	},
 	{
+		"Name": "The Sea Wall", "Area": "The Courtyard", "xCoord": 1425, "yCoord": 810, 
+		"Description": "",
+		"Connections": [{"Neighbor": "Inside the Gate", "Distance": 0}, {"Neighbor": "Central Court", "Distance": 0}]
+	},
+	{
+		"Name": "Central Court", "Area": "The Courtyard", "xCoord": 1330, "yCoord": 845, 
+		"Description": "",
+		"Connections": [{"Neighbor": "Inside the Gate", "Distance": 0}, {"Neighbor": "Archives (Public)", "Distance": 0}, {"Neighbor": "The Ramparts", "Distance": 0}, {"Neighbor": "Reservoir", "Distance": 3}]
+	},
+	{
+		"Name": "The Gallery", "Area": "The Courtyard", "xCoord": 1255, "yCoord": 750, 
+		"Description": "",
+		"Connections": [{"Neighbor": "Archives (Public)", "Distance": 0}, {"Neighbor": "Unearthed Dormitory", "Distance": 3}]
+	},
+	{
+		"Name": "Archives (Public)", "Area": "The Courtyard", "xCoord": 1230, "yCoord": 790, 
+		"Description": "",
+		"Connections": [{"Neighbor": "Central Court", "Distance": 0}, {"Neighbor": "Archives (Restricted)", "Distance": 0}, {"Neighbor": "The Gallery", "Distance": 0}]
+	},
+	{
+		"Name": "Archives (Restricted)", "Area": "The Courtyard", "xCoord": 1200, "yCoord": 750, 
+		"Description": "",
+		"Connections": [{"Neighbor": "Archives (Public)", "Distance": 0}]
+	},
+	{
 		"Name": "The Canal", "Area": "The Dam", "xCoord": 1225, "yCoord": 950, 
-		"Connections": [{"Neighbor": "Reclamation Plant", "Distance": 2}, {"Neighbor": "The Generator", "Distance": 0}, {"Neighbor": "The Power Grid", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Reclamation Plant", "Distance": 3}, {"Neighbor": "The Generator", "Distance": 0}, {"Neighbor": "The Power Grid", "Distance": 0}]
 	},
 	{
 		"Name": "The Reservoir", "Area": "The Dam", "xCoord": 1240, "yCoord": 865, 
-		"Connections": [{"Neighbor": "The Generator", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Generator", "Distance": 0}, {"Neighbor": "Central Court", "Distance": 3}]
 	},
 	{
 		"Name": "The Power Grid", "Area": "The Dam", "xCoord": 1200, "yCoord": 1000, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Generator", "Distance": 0}, {"Neighbor": "The Canal", "Distance": 0}]
 	},
 	{
 		"Name": "The Generator", "Area": "The Dam", "xCoord": 1185, "yCoord": 915, 
-		"Connections": [{"Neighbor": "Immolated Dormitory", "Distance": 2}, {"Neighbor": "The Canal", "Distance": 0}, {"Neighbor": "The Power Grid", "Distance": 0}, {"Neighbor": "The Reservoir", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Immolated Dormitory", "Distance": 3}, {"Neighbor": "The Canal", "Distance": 0}, {"Neighbor": "The Power Grid", "Distance": 0}, {"Neighbor": "The Reservoir", "Distance": 0}]
 	},
 	{
 		"Name": "Immolated Dormitory", "Area": "The Foundry", "xCoord": 1110, "yCoord": 900, 
-		"Connections": [{"Neighbor": "The Generator", "Distance": 2}, {"Neighbor": "The Furnace", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Generator", "Distance": 3}, {"Neighbor": "The Furnace", "Distance": 0}, {"Neighbor": "The Refinery", "Distance": 0}]
 	},
 	{
 		"Name": "The Furnace", "Area": "The Foundry", "xCoord": 1010, "yCoord": 875, 
-		"Connections": [{"Neighbor": "Immolated Dormitory", "Distance": 0}, {"Neighbor": "The Refinery", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Immolated Dormitory", "Distance": 0}, {"Neighbor": "The Refinery", "Distance": 0}, {"Neighbor": "The Kitchen", "Distance": 3}]
 	},
 	{
 		"Name": "The Refinery", "Area": "The Foundry", "xCoord": 1000, "yCoord": 925, 
-		"Connections": [{"Neighbor": "The Furnace", "Distance": 0}, {"Neighbor": "The Chimney", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Immolated Dormitory", "Distance": 0}, {"Neighbor": "The Furnace", "Distance": 0}, {"Neighbor": "The Chimney", "Distance": 0}]
 	},
 	{
 		"Name": "The Chimney", "Area": "The Foundry", "xCoord": 910, "yCoord": 955, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Refinery", "Distance": 0}]
 	},
 	{
 		"Name": "The Precipice", "Area": "The Rises", "xCoord": 1565, "yCoord": 865, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Overlook", "Distance": 3}, {"Neighbor": "The Lift", "Distance": 0}]
 	},
 	{
 		"Name": "The Lift", "Area": "The Rises", "xCoord": 1525, "yCoord": 800, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Precipice", "Distance": 0}, {"Neighbor": "The Summit", "Distance": 0}, {"Neighbor": "River's Source", "Distance": 0}]
 	},
 	{
 		"Name": "The Summit", "Area": "The Rises", "xCoord": 1450, "yCoord": 675, 
+		"Description": "",
 		"Connections": [{"Neighbor": "River's Source", "Distance": 0}, {"Neighbor": "The Lift", "Distance": 0}, {"Neighbor": "Abandoned Mining Village", "Distance": 3}]
 	},
 	{
 		"Name": "River's Source", "Area": "The Rises", "xCoord": 1420, "yCoord": 745, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Lift", "Distance": 0}, {"Neighbor": "The Summit", "Distance": 0}]
 	},
 	{
 		"Name": "Abandoned Mining Village", "Area": "The Dig", "xCoord": 1400, "yCoord": 600, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Summit", "Distance": 3}, {"Neighbor": "Unearthed Dormitory", "Distance": 0}, {"Neighbor": "The Excavation", "Distance": 0}]
 	},
 	{
 		"Name": "Unearthed Dormitory", "Area": "The Dig", "xCoord": 1350, "yCoord": 675, 
-		"Connections": [{"Neighbor": "Abandoned Mining Village", "Distance": 0}, {"Neighbor": "The Excavation", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Abandoned Mining Village", "Distance": 0}, {"Neighbor": "The Excavation", "Distance": 0}, {"Neighbor": "The Gallery", "Distance": 3}]
 	},
 	{
 		"Name": "The Excavation", "Area": "The Dig", "xCoord": 1310, "yCoord": 600, 
+		"Description": "",
 		"Connections": [{"Neighbor": "Abandoned Mining Village", "Distance": 0}, {"Neighbor": "Unearthed Dormitory", "Distance": 0}, {"Neighbor": "The Sepulchre", "Distance": 0}]
 	},
 	{
 		"Name": "The Sepulchre", "Area": "The Dig", "xCoord": 1350, "yCoord": 550, 
-		"Connections": [{"Neighbor": "The Excavation", "Distance": 0}, {"Neighbor": "The Tannenbaum", "Distance": 2}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Excavation", "Distance": 0}, {"Neighbor": "The Tannenbaum", "Distance": 3}]
 	},
 	{
 		"Name": "The Tannenbaum", "Area": "The Garden", "xCoord": 1220, "yCoord": 500, 
-		"Connections": [{"Neighbor": "The Sepulchre", "Distance": 2}, {"Neighbor": "Overgrown Dormitory", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "The Sepulchre", "Distance": 3}, {"Neighbor": "Overgrown Dormitory", "Distance": 0}]
 	},
 	{
 		"Name": "Overgrown Dormitory", "Area": "The Garden", "xCoord": 1160, "yCoord": 525, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Tannenbaum", "Distance": 0}, {"Neighbor": "The Plot", "Distance": 0}]
 	},
 	{
 		"Name": "The Plot", "Area": "The Garden", "xCoord": 1120, "yCoord": 500, 
-		"Connections": [{"Neighbor": "Overgrown Dormitory", "Distance": 0}, {"Neighbor": "Hedge Maze", "Distance": 0}]
+		"Description": "",
+		"Connections": [{"Neighbor": "Overgrown Dormitory", "Distance": 0}, {"Neighbor": "Hedge Maze", "Distance": 0}, {"Neighbor": "The Greenhouse", "Distance": 0}]
 	},
 	{
 		"Name": "Hedge Maze", "Area": "The Garden", "xCoord": 1170, "yCoord": 450, 
+		"Description": "",
 		"Connections": [{"Neighbor": "The Plot", "Distance": 0}]
+	},
+	{
+		"Name": "The Greenhouse", "Area": "The Garden", "xCoord": 1100, "yCoord": 600, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Plot", "Distance": 0}, {"Neighbor": "The Menagerie", "Distance": 3}]
+	},
+	{
+		"Name": "The Offices", "Area": "The Facility", "xCoord": 1150, "yCoord": 750, 
+		"Description": "",
+		"Connections": [{"Neighbor": "Archives (Public)", "Distance": 3}, {"Neighbor": "The Laboratory", "Distance": 0}]
+	},
+	{
+		"Name": "The Laboratory", "Area": "The Facility", "xCoord": 1100, "yCoord": 800, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Offices", "Distance": 0}, {"Neighbor": "The Kitchen", "Distance": 0}]
+	},
+	{
+		"Name": "The Kitchen", "Area": "The Facility", "xCoord": 1025, "yCoord": 800, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Laboratory", "Distance": 0}, {"Neighbor": "The Threshold", "Distance": 0}, {"Neighbor": "The Furnace", "Distance": 3}]
+	},
+	{
+		"Name": "The Threshold", "Area": "The Facility", "xCoord": 1000, "yCoord": 750, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Kitchen", "Distance": 0}, {"Neighbor": "The Spire", "Distance": 0}, {"Neighbor": "The Control Room", "Distance": 0}, {"Neighbor": "The Fairgrounds", "Distance": 0}]
+	},
+	{
+		"Name": "The Spire", "Area": "The Facility", "xCoord": 1100, "yCoord": 725, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Offices", "Distance": 0}, {"Neighbor": "The Menagerie", "Distance": 0}, {"Neighbor": "The Threshold", "Distance": 0}]
+	},
+	{
+		"Name": "The Control Room", "Area": "The Facility", "xCoord": 1025, "yCoord": 700, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Threshold", "Distance": 0}]
+	},
+	{
+		"Name": "The Menagerie", "Area": "The Facility", "xCoord": 1100, "yCoord": 675, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Greenhouse", "Distance": 3}, {"Neighbor": "The Spire", "Distance": 0}]
+	},
+	{
+		"Name": "The Fairgrounds", "Area": "The Festival", "xCoord": 900, "yCoord": 775, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Threshold", "Distance": 3}, {"Neighbor": "The Stalls", "Distance": 0}, {"Neighbor": "The Midway", "Distance": 0}, {"Neighbor": "Winter's Edge", "Distance": 0}]
+	},
+	{
+		"Name": "The Stands", "Area": "The Festival", "xCoord": 910, "yCoord": 725, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Fairgrounds", "Distance": 0}, {"Neighbor": "The Eye", "Distance": 0}, {"Neighbor": "The Parade", "Distance": 0}]
+	},
+	{
+		"Name": "The Midway", "Area": "The Festival", "xCoord": 850, "yCoord": 800, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Fairgrounds", "Distance": 0}, {"Neighbor": "The Field of Lights", "Distance": 0}, {"Neighbor": "The Circus", "Distance": 0}]
+	},
+	{
+		"Name": "The Eye", "Area": "The Festival", "xCoord": 855, "yCoord": 700, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Stands", "Distance": 0}]
+	},
+	{
+		"Name": "The Parade", "Area": "The Festival", "xCoord": 955, "yCoord": 700, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Stands", "Distance": 0}]
+	},
+	{
+		"Name": "Field of Lights", "Area": "The Festival", "xCoord": 860, "yCoord": 840, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Midway", "Distance": 0}]
+	},
+	{
+		"Name": "The Circus", "Area": "The Festival", "xCoord": 800, "yCoord": 825, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Midway", "Distance": 0}]
+	},
+	{
+		"Name": "Winter's Edge", "Area": "The Wilderness", "xCoord": 800, "yCoord": 750, 
+		"Description": "",
+		"Connections": [{"Neighbor": "The Fairgrounds", "Distance": 0}]
 	}
+	
 ]

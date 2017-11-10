@@ -1,4 +1,4 @@
-package com.lc.game.Map;
+package com.lc.game.Manager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,47 +12,56 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.lc.game.Manager.StateManager;
+import com.lc.game.LiarGame;
 import com.lc.game.Map.actors.Edge;
 import com.lc.game.Map.actors.MapBackdrop;
 import com.lc.game.Map.actors.Node;
+import com.lc.game.Scene.SceneView;
 
 /**
  * 
  * @author Zachary Tu
  * Manager for managing node and edges in the map
  */
-public class MapState {
+public class MapManager {
 	
-//	private AssetManager assetManager;
-//	private StateManager stateManager;
+	private AssetManager assetManager;
+	private StateManager stateManager;
 	
+	//These two maps contain information about all nodes/edges in the game. They are initialized on game start.
 	private HashMap<String, Node> nodeMap;
 	private HashMap<String, Edge> edgeMap;
 	
-	private String currentNode;
+	//This is the string name of the node that the player is currently in.
+	private String currentNode, safeNode;
 
-	public MapState(AssetManager assetManager, StateManager stateManager) {
-//		this.assetManager = assetManager;
-//		this.stateManager = stateManager;
+	public MapManager(AssetManager assetManager, StateManager stateManager) {
+		this.assetManager = assetManager;
+		this.stateManager = stateManager;
 		MapBackdrop map = new MapBackdrop(assetManager);
 		
 		//Add nodes and edges.
 		nodeMap = new HashMap<String, Node>();
 		edgeMap = new HashMap<String, Edge>();
 
+		//Read node and connection info from json file.
 		JsonReader json = new JsonReader();
 		JsonValue base = json.parse(Gdx.files.internal("MapInfo.json"));
 		
 		for (JsonValue node : base) {
+			
+			//Create node from info drawn from json file. First, compile neighbor data.
 			final Map<String, Integer> neighbors = new HashMap<String, Integer>();
 			
 			for (JsonValue neighbor : node.get("Connections")) {
 				neighbors.put(neighbor.getString("Neighbor"), neighbor.getInt("Distance"));
 			}
-			addNode(new Node(assetManager, node.getString("Name"), node.getString("Area"), node.getInt("XCoord"), 
-					node.getInt("YCoord"), map) {
+			
+			//Create the node and add it to nodemap. addNode also updates edgemap simultaneously.
+			addNode(new Node(assetManager, node.getString("Name"), node.getString("Area"), node.getString("Description"),
+					node.getInt("XCoord"), node.getInt("YCoord"), map) {
 				
+				//Upon initialization of new nodes, we give them all the same inputlistener.
 				{
 					addListener( new InputListener() {
 						@Override
@@ -115,9 +124,14 @@ public class MapState {
 			});
 		}
 
-		moveTo("Sodden Lot");
+		safeNode = "Sunken Dormitory";
 	}
 	
+	/**
+	 * This is run whenever a node is created. 
+	 * It adds the node to the map and adds all corresponding edges that have not already been added.
+	 * @param newNode: The node that is being added to nodeMap
+	 */
 	public void addNode(Node newNode) {
 		for(String n : newNode.getNeighbors().keySet()) {
 			Node neighbor = nodeMap.get(n);
@@ -131,12 +145,19 @@ public class MapState {
 		nodeMap.put(newNode.getName(), newNode);
 	}
 	
+	/**
+	 * This is run when the player moves from one node to another.
+	 * This only handles setting nodes as explored/discovered/current by the player. 
+	 * @param nodeName: The name of the node that the player is moving towards.
+	 */
 	public void moveTo(String nodeName) {
 		Node newNode = nodeMap.get(nodeName);
 		
 		if (newNode != null) {
 			newNode.setDiscovered(true);
 			newNode.setExplored(true);
+			
+			stateManager.getSceneManager().eventOnMove(currentNode, nodeName, stateManager.getPlayer());
 			
 			currentNode = nodeName;
 			
@@ -148,7 +169,22 @@ public class MapState {
 					}
 				}
 			}
+			
+			//When we add a fade out/in transition, it will probably be here.
+			
+	        LiarGame.getViewManager().createView(SceneView.class, assetManager, stateManager);
 		}
+	}
+	
+	/**
+	 * This returns the distance from the current node to the input node.
+	 * Eventually, make this method account for cost-modifiers.
+	 * This should return null if there is no edge to dest
+	 * @param dest: the node we want to find the magnitude of the edge between current
+	 * @return
+	 */
+	public int distanceTo(String dest) {
+		return nodeMap.get(currentNode).getNeighbors().get(dest);		
 	}
 
 	public HashMap<String, Node> getNodeMap() {
@@ -173,5 +209,13 @@ public class MapState {
 
 	public void setCurrentNode(String currentNode) {
 		this.currentNode = currentNode;
+	}
+
+	public String getSafeNode() {
+		return safeNode;
+	}
+
+	public void setSafeNode(String safeNode) {
+		this.safeNode = safeNode;
 	}
 }

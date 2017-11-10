@@ -19,7 +19,6 @@ public class ScriptLoader {
 	
 	public Script load(File file) {
 		//TODO: Load from JSON script file. StateManager is queried for dynamic scripts.
-		stateManager.getTurnNumber();
 		
 		FileReader scriptInput;
 		Script script =null;

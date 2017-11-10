@@ -11,7 +11,7 @@ import com.lc.game.LiarGame;
 import com.lc.game.Dialogue.DialogueView;
 import com.lc.game.GlobalActors.Text;
 import com.lc.game.Manager.StateManager;
-import com.lc.game.Map.MapView;
+import com.lc.game.Scene.SceneView;
 import com.lc.game.Title.actors.TitleBackdrop;
 
 /**
@@ -26,12 +26,12 @@ public class TitleView extends AView{
 		super(assetManager, stateManager, viewport, batch);
 		addActor(new TitleBackdrop(assetManager));
 		addActor(new Text(assetManager, "Liar's Christmas", 100, LiarGame.CONFIG_HEIGHT - 100, true));
-		mapOption = new Text(assetManager, "MAP", 150, LiarGame.CONFIG_HEIGHT - 180);
+		mapOption = new Text(assetManager, "PLAY?", 150, LiarGame.CONFIG_HEIGHT - 180);
 		dialogueOption = new Text(assetManager, "DIALOGUE", 150, LiarGame.CONFIG_HEIGHT - 220);
 		
 		mapOption.addListener(new ClickListener() {
 	        public void clicked(InputEvent e, float x, float y) {
-	            LiarGame.getViewManager().createView(MapView.class, getAssetManager(), getStateManager());
+	            LiarGame.getViewManager().createView(SceneView.class, getAssetManager(), getStateManager());
 	        }
 	    });
 		mapOption.setScale(0.5f);
