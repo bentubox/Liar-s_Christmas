@@ -1,0 +1,29 @@
+{
+	"header" : {
+				"name" : "test_0",
+				"speakers" : 2,
+				"background" : "BACKGROUND_PLACEHOLDER"
+			},
+	
+	"body" : [
+	
+		{
+			"speaker" : "sp0",
+			"image" : "PORTRAIT_PLACEHOLDER_COOPER",
+			"text" : "test"
+		},
+		
+		{
+			"speaker" : "sp1",
+			"image" : "PORTRAIT_PLACEHOLDER_TATE",
+			"text" : "yes"
+		},
+		
+		{
+			"speaker" : "sp0",
+			"action" : "BOB",
+			"text" : "ok lol"
+		},
+		
+	]
+}

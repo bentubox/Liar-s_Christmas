@@ -33,7 +33,7 @@ public class LiarGame extends ApplicationAdapter {
 	private static boolean DEBUG = true;
 	
 	private static OrthographicCamera camera;
-    public static FitViewport viewport;
+    private static FitViewport viewport;
 	private static ShapeRenderer shapeRenderer;
     
 	private static ViewManager viewManager;
