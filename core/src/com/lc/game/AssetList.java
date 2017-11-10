@@ -9,7 +9,7 @@ public enum AssetList {
 	TITLE_CARD("ornament_title.jpg", Texture.class),
 	BUTLER_FONT("fonts/butler.fnt", null),
 	LEARNING_FONT("fonts/learning_curve.fnt", null),
-<<<<<<< HEAD
+
 	MAP("map/lolitsrice_placeholder.png", Texture.class),
 	MAP_NODE("map/node.png", Texture.class),
 	
@@ -21,15 +21,12 @@ public enum AssetList {
 	SCRIPT_TEST("script/test_0.script", null),
 
 	SCENE1TEST("scenes/Scene1Test.png", Texture.class),
-	SCENE2TEST("scenes/Scene2Test.png", Texture.class);
-=======
-	MAP("lolitsrice_placeholder.png", Texture.class),
-	MAP_NODE("node.png", Texture.class),
+	SCENE2TEST("scenes/Scene2Test.png", Texture.class),
+	
 	UISKINIMG("ui/uiskin.png", Texture.class),
 	UISKINATL("ui/uiskin.atlas", TextureAtlas.class),
 	
 	EVENTPLACEHOLDER("eventPlaceholder.gif", Texture.class),
->>>>>>> daa22b8affbdf7e2134b06a267b0d6caf3eaa498
 
 	SCENESODDENLOT("scenes/SceneSoddenLot.gif", Texture.class),
 	SCENESUNKENDORM("scenes/SceneSunkenDorm.gif", Texture.class),
