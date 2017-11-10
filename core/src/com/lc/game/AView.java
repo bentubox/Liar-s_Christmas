@@ -33,7 +33,7 @@ public abstract class AView extends Stage {
 	public String toString() {
 		return VIEW_TYPE;
 	}
-	
+
 	public AssetManager getAssetManager() {
 		return assetManager;
 	}

@@ -25,7 +25,8 @@ public class ViewManager {
 	
 	public void createView(Class<?> type, AssetManager assetManager, StateManager stateManager) {
         try {
-            setCurrentView((AView) type.getConstructor(AssetManager.class, StateManager.class, Viewport.class, Batch.class).newInstance(assetManager, stateManager, viewport, batch));
+            setCurrentView((AView) type.getConstructor(AssetManager.class, StateManager.class, Viewport.class, Batch.class)
+            		.newInstance(assetManager, stateManager, viewport, batch));
     		Gdx.input.setInputProcessor(currentView);
             currentView.init();
         } catch (InstantiationException e) {
