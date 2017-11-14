@@ -1,0 +1,587 @@
+Rooms{
+  "0": {
+    "Name": "Ordinary Room",
+    "Description": "You are in what appears to be a perfectly normal dungeon room. The floor is composed of run-of-the-mill dungeon cobblestones, similar to ones you've seen in the various other dungeons you've been in before. The stale air carries a distinctive dungeon smell that makes you feel uneasy. Skulls, chains and other mood-setting dungeon decorations line the dim corners of the room. The windows even have little metal bars despite the fact they don't lead anywhere anyone would want to go.",
+    "Examine": {
+      "skull": "Alas, you knew him well.",
+      "skulls": "Alas, you knew them well.",
+      "cobblestone": "Pebbles and mortar. People have probably died on this.",
+      "chain": "Rusty and painful-looking. Your joints are feeling stiff just looking at it.",
+      "chains": "Rusty and painful-looking. Your joints are feeling stiff just looking at it.",
+      "decorations": "Mostly dust. That counts as decoration, right?",
+      "window": "A sorry excuse for a window. More like a square divot in the wall staring into more wall.",
+      "bars": "Metal bars over the \"window\". Looks like there are scratch marks on them."
+    }
+  },
+  "1": {
+    "Name": "Living Room",
+    "Description": "The room resembles the comfy family room of a typical middle class, American family.<br>A family-sized couch sits in front of a defunct television set. A crackling fireplace sits in the corner, and above it hangs a mantle with family photos and baseball trophies.<br>Unfortunately all of the aforementioned furniture is nailed to the dungeon floor and cannot be stolen.",
+    "Examine": {
+      "couch": "A large couch for four. It looks to be in surprisingly good condition.",
+      "television": "Only static. Shame. You're getting really behind on those shows you were watching.",
+      "tv": "Only static. Shame. You're getting really behind on those shows you were watching.",
+      "fireplace": "You notice that the fire is fake. Upper Management likes their fires in trap-form.",
+      "mantle": "A shelf hanging over the fireplace. Also the region of Earth between the core and the crust.",
+      "photos": "Hey! These aren't family photos! These are just stock images from the internet!",
+      "trophies": "\"Employee of the Month\" it reads."
+    }
+  },
+  "2": {
+    "Name": "Dusty Room",
+    "Description": "The only notable thing about this room is the considerable amount of dust lining the floor and everything in it.<br>This room is even dusty when compared to other areas in the Rooms for Improvement which are already on the dusty end of things by virtue of poor maintenance.",
+    "Examine": {
+      "dust": "You'd like to imagine that this dust was once part of something really beautiful."
+    }
+  },
+  "3": {
+    "Name": "Tea Room",
+    "Description": "You are in a tatami-floored room with a short, wooden table for serving tea. Lining the room are all manner of flowers and pictures that, while pretty, are not worth taking with you. Despite the room's choice of decoration and name, you find no tea nor tea leaves.",
+    "Examine": {
+      "tatami": "Woven mats covering the floor. Four and a Half is all you really need.",
+      "table": "This is a pretty run-of-the-mill table.",
+      "flowers": "Pretty and surprisingly fresh. You figure someone's job is to regularly replace the dungeon flowers.",
+      "flower": "Pretty and surprisingly fresh. You figure someone's job is to regularly replace the dungeon flowers.",
+      "pictures": "The pictures depict the same flowers they are located next to.",
+      "picture": "The picture depict the same flowers they are located next to.",
+      "tea": "I told you there wasn't any tea, didn't I?"
+    }
+  },
+  "4": {
+    "Name": "Moldy Room",
+    "Description": "The walls and floor of the room you are standing in is covered in a thick film of slimy, colorful mold. While unpleasant to look at, the mold is nonviolent and does nothing to impair your journey. You've heard stories of people dying from breathing in too many mold spores, so you hold your sleeve over your mouth and breath carefully.",
+    "Examine": {
+      "mold": "Life would be much easier if you too were mold."
+    }
+  },
+  "5": {
+    "Name": "Echoing Room",
+    "Description": "The room you are standing in is composed of various high-quality acoustic tiles, causing every sound ever emitted within the room to echo endlessly inside. You hold your ear to the wall to try and make some sense of the cacophony. When you do, you faintly hear the sound of a high-pitched voice singing an unrecognizable song that stirs within you an overwhelming sense of longing.",
+    "Examine": {
+      "tile": "High-quality acoustic tiles. Wasted down in a dungeon, for sure.",
+      "tiles": "High-quality acoustic tiles. Wasted down in a dungeon, for sure."
+    }
+  },
+  "6": {
+    "Name": "Luminescent Room",
+    "Description": "Embedded in the walls of this room are various jelly-like tendrils glowing faintly with some sort of bioluminescence. Were it not for these glowing strands, this chamber would be pitch black. You attempt to take one with you, but it dissolves into a runny paste the moment it is detached from the wall. The disintegrated substance quickly becomes vapor, leaving behind nothing but a bright streak on the dungeon floor.",
+    "Examine": {
+      "tendril": "Glowing and pretty, but a little unnerving.",
+      "tendrils": "Glowing and pretty, but a little unnerving.",
+      "strand": "Glowing a pretty, but a little unnerving.",
+      "paste": "Looks like off-brand toothpaste.",
+      "vapor": "Not an easy thing to examine, given its state of matter.",
+      "streak": "If shadows had an opposite, this would look like it."
+    }
+  },
+  "7": {
+    "Name": "Snowy Room",
+    "Description": "You are in a round room with a raised ceiling. So raised, in fact, that it remains out of view. From the vast space above your head, a steady sprinkling of fresh snow falls, covering the dungeon floor with a blanket of white. Besides its unusual taste, the snow appears to be fairly normal albeit out-of-place. High above your head, from where the source of the snow must be, you hear the distant sound of Christmas caroling.",
+    "Examine": {
+      "snow": "Odd. Every snowflake looks exactly the same.",
+      "ceiling": "You try being taller but are still unable to see the ceiling."
+    }
+  },
+  "8": {
+    "Name": "Ventilated Room",
+    "Description": "You find yourself in a pretty plain-looking room. A pleasant breeze of outside air permeates through the room contrasting with the foul atmosphere of the rest of the Rooms for Improvement. You satisfyingly fill your lungs with fresh air before glancing through the rest of the room. Oddly, you notice an unusual lack of a vent or a hole that could possibly be the source of the sweet air.",
+    "Examine": {
+      "air": "Looks like air, alright."
+    }
+  },
+  "9": {
+    "Name": "Flooded Room",
+    "Description": "You appear to be knee-deep in murky, stagnant water. As a result of poor dungeon drainage, the room you are standing in has partially submerged by backed-up dungeon sewage.<br>It goes without saying that this would not be a good place to lose a contact lens.",
+    "Examine": {
+      "water": "Honestly, calling it water is a little hopeful."
+    }
+  },
+  "10": {
+    "Name": "Inflatable Room",
+    "Description": "You are in what appears to be an inflatable chamber of the dungeon, much like a moonbounce at a child’s birthday party. In the distance you can hear the humming of a high-powered fan running constantly to maintain the room's bounciness. A laminated sign of a cartoon clown reminds dungeon visitors to take off their shoes before entering and to play nice with other kids.",
+    "Examine": {
+      "moonbounce": "This moonbounce looks familiar from the inside...",
+      "fan": "A powerful fan running continuously. No wonder your company's electricity bills are so high.",
+      "sign": "Don't forget to play nice with other kids.",
+      "clown": "You don't recognize this cartoon mascot."
+    }
+  },
+  "11": {
+    "Name": "Overgrown Room",
+    "Description": "The walls of the room have been covered by ivy and other vegetation. Beneath the thick layers of flora, weathered stone stands, untouched by dungeon air. You find the plant’s source of light affixed to the ceiling; a transparent prism radiating light from the aboveground like the world’s most obtuse fiber optic. Unfortunately, the device is tightly fastened to the dungeon ceiling and cannot be removed.",
+    "Examine": {
+      "ivy": "You're no botanist, but this is definitely ivy.",
+      "stone": "Solid as it is, plants have managed to take root within.",
+      "prism": "The light radiating from this makes you feel warm and at ease. You feel like you could stare at it all day."
+    }
+  },
+  "12": {
+    "Name": "Sterile Room",
+    "Description": "The room is thoroughly spotless, besides the dirty footprints you left on the way in. The smooth, white walls of the chamber look clean enough for you to eat meals off of. The chamber radiates with a sense of austere purity that fills you with a sense of non-belonging. You feel as though you are contaminating some sacred space with your earthly prescence.",
+    "Examine": {
+      "footprint": "Filthy! Filthy! Who could have done this?",
+      "footprints": "Filthy! Filthy! Who could have done this?",
+      "floor": "Hey! You can see your reflection!"
+    }
+  },
+  "13": {
+    "Name": "Staircase Room",
+    "Description": "The room is lined with various staircases pointing in every direction yet leading to nowhere. Some of the stairs lead into the solid walls of the dungeon. Some stop midair, incomplete. Others still lead into each other and ultimately back to the ground, leaving the only no additional exits. Despite their obvious lack of purpose, the weathered steps of each staircase show signs of heavy use.",
+    "Examine": {
+      "stairs": "You've always been more of an elevator-person.",
+      "staircase": "You've always been more of an elevator-person.",
+      "staircases": "You've always been more of an elevator-person."
+    }
+  },
+  "14": {
+    "Name": "Melting Room",
+    "Description": "The walls of this room appear to be constructed of a mysterious, rapidly melting material. Large globes of freshly melted liquid flow downwards like a cascade and harden on the uneven dungeon floor. This would bode well for your escape if it were not for the fact that the ceiling is melting as well, hardening along the walls and recovering the lost matter.",
+    "Examine": {
+      "liquid": "An undiscovered state of matter is just the sort of thing that ends up at the bottom of this dungeon.",
+      "walls": "An undiscovered state of matter is just the sort of thing that ends up at the bottom of this dungeon.",
+      "wall": "An undiscovered state of matter is just the sort of thing that ends up at the bottom of this dungeon.",
+      "ceiling": "An undiscovered state of matter is just the sort of thing that ends up at the bottom of this dungeon.",
+      "floor": "An undiscovered state of matter is just the sort of thing that ends up at the bottom of this dungeon."
+    }
+  },
+  "15": {
+    "Name": "Heartbeat Room",
+    "Description": "This poorly-lit room appears to be made of some sort of thick, meaty substance. Red drops of translucent substance drip to the floor from a valve situated at the apex of the room’s domed ceiling. The fleshy walls around you contract and expand with a rhythm much slower and more deliberate than your own heart.",
+    "Examine": {
+      "valve": "Like little doors within each and every one of us.",
+      "walls": "This dungeon should cut back on the cholesterol.",
+      "wall": "This dungeon should cut back on the cholesterol.",
+      "ceiling": "This dungeon should cut back on the cholesterol.",
+      "floor": "This dungeon should cut back on the cholesterol."
+    }
+  },
+  "16": {
+    "Name": "Pendulum Room",
+    "Description": "This cylindrical chamber used to house a deadly, swinging blade attached to a rapidly descending ceiling. Fortunately for you, centuries of disuse have left the ceiling mechanism rusted-over and immobile, rendering the once-deadly trap harmless. Even still, the unfriendly-looking blade hangs imposingly in the air as if to hasten your next decision.",
+    "Examine": {
+      "blade": "You stare at the blade overhead. Things could be worse, you suppose."
+    }
+  },
+  "17": {
+    "Name": "Surgical Room",
+    "Description": "You appear to be in a long-forgotten operating room. Dangerous-looking apparatuses dangle from the ceiling, illuminated by a powerful spotlight. The focus of the light is a surgical bed in the center of the room. The walls, floors and everything else in the room is stained with the rancid by-products of an unsuccessful operation conducted in the distant past.",
+    "Examine": {
+      "spotlight": "Not even surgeons can see in the dark.",
+      "apparatuses": "A bunch of pointed metal bits all stuck together with sticky surgical fluids. Too gross and unwieldy for you to take with you.",
+      "bed": "Looking at this makes you feel a little less tired.",
+      "blood": "Hey, I didn't specify that \"rancid by-products\" referred to blood."
+    }
+  },
+  "18": {
+    "Name": "Locker Room",
+    "Description": "The room you are in is identical to a gym locker-room, right down to the stench of sweat and cleaning chemicals. Lining the walls are rows and rows of ventilated lockers, half of which are open but contain nothing but worthless cruft. The remainder are locked and inaccessible, but probably contain really useful items you really need.",
+    "Examine": {
+      "lockers": "Pretty ordinary locked lockers. Even the unwanted and forgotten lies beyond your grasp.",
+      "locker": "Pretty ordinary locked lockers. Even the unwanted and forgotten lies beyond your grasp.",
+      "cruft": "Not particularly useful or pleasant."
+    }
+  },
+  "19": {
+    "Name": "Torture Room",
+    "Description": "The room you are in must have served as a chamber for torturing prisoners in the long and distant past. Sinister-looking chains and shackles hang from the room's ceiling. Elaborate mechanisms are scattered throughout, each lined with painful-looking barbs or hooks. You briefly wonder what sort of dungeon this is before decided you'd be uncomfortable regardless.",
+    "Examine": {
+      "chain": "Experienced torturers know of at least twenty ways to torture people using only a metal chain.",
+      "chains": "Experienced torturers know of at least twenty ways to torture people using only a metal chain.",
+      "shackle": "Icefrog, please nerf.",
+      "shackles": "Icefrog, please nerf.",
+      "barb": "For inserting underneath the fingernails of victims.",
+      "barbs": "For inserting underneath the fingernails of victims.",
+      "hook": "Used in fishing.<br>For intelligence from captured enemies.",
+      "hooks": "Used in fishing.<br>For intelligence from captured enemies."
+    }
+  },
+  "20": {
+    "Name": "Hairy Room",
+    "Description": "The walls of this room are covered in what appears to be human hair. Each strand is meticulously attached with an individual dab of glue.<br>Ugh.",
+    "Examine": {
+      "hair": "Hair is one of those things that gets a lot grosser when its no longer a part of someone.",
+      "hairs": "Hair is one of those things that gets a lot grosser when its no longer a part of someone."
+    }
+  },
+  "21": {
+    "Name": "Mirror Room",
+    "Description": "Attached to the walls of this room are a variety of unusual mirrors placed at various angles. Gazing across the collection, you notice that some make you look fat and ugly, twisted and deformed. Others distort your reflection with the use of cleverly placed convex and concave lenses.",
+    "Examine": {
+      "mirror": "While usually coated with silver, harsh economic times have forced people to use aluminum and imagination as substitutes.",
+      "mirrors": "While usually coated with silver, harsh economic times have forced people to use aluminum and imagination as substitutes."
+    }
+  },
+  "22": {
+    "Name": "Windmill Room",
+    "Description": "Inside this room, you see several antiquated windmills. The long canvas blades of the mills are unsurprisingly still given the lack of wind in the underground Rooms for Improvement. You find a sign on the wall containing an apology from the contractor for poor foresight. The sign goes on to politely request that passerbys manually give the windmills a few spins if its not too much trouble.",
+    "Examine": {
+      "windmill": "You look inside one of the windmills and find a petrified bag of disappointed-looking grain. Not useful enough for you to take with you.",
+      "windmills": "You look inside one of the windmills and find a petrified bag of disappointed-looking grain. Not useful enough for you to take with you.",
+      "sign" : "You follow the sign and give the windmill a good turn out of goodwill."
+    }
+  },
+  "23": {
+    "Name": "Holey Room",
+    "Description": "Every surface in this room is covered in round holes and pock-marks of various diameters. You suppress rising feelings of trypophobia and peek into the nearest hole. The hole extends for several meters inwards and houses a wriggling worm-like creature at the bottom.<br>You decide not to look into any more holes.",
+    "Examine": {
+      "hole": "You look into another hole. Yup. Worm in that one too.",
+      "holes": "You look into another hole. Yup. Worm in that one too.",
+      "worm" : "The worms are understandably trying to burrow as far away from this room as possible."
+    }
+  },
+  "24": {
+    "Name": "Moth-Bitten Room",
+    "Description": "The walls of this room seem to be constructed with tapestries depicting various obscure historical events. Each piece has been fed on heavily by moths leaving nothing behind but frayed scraps of fabric. You note that the moths seem to have prioritized defacing the segments of cloth depicting human faces.",
+    "Examine": {
+      "tapestry": "Its too moth-bitten for you to figure out what is being depicted.",
+      "tapestries": "They're too moth-bitten for you to figure out what is being depicted."
+    }
+  },
+  "25": {
+    "Name": "Deliquesce Room",
+    "Description": "The floor of this room is covered in a thick layer of rotting vegetable matter. While the foul mess is mostly liquefied, you notice some recognizable chunks sticking out of the sludge. Carrots, radishes, beets ... <br>Looks like someone tried making salad on the ground. And forgot about it.",
+    "Examine": {
+      "vegetable": "This must be where they dump all the uneaten vegetables in the company servery.",
+      "vegetables": "This must be where they dump all the uneaten vegetables in the company servery.",
+      "salad": "Ok, calling it salad is a bit of a stretch.",
+      "carrot": "Looks like a good snack for a zombie rabbit",
+      "carrots": "Looks like a good snack for a zombie rabbit",
+      "radish": "Radical. ish",
+      "radishes": "Radical. ish",
+      "beet": "Looks like someone let the beet drop.",
+      "beets": "Looks like someone let the beet drop."
+    }
+  },
+  "26": {
+    "Name": "Inverted Room",
+    "Description": "The contents of this room appear to be upside-down. The floor and ceiling are both constructed with materials generally reserved for the other. The room is poorly furnished and the items that do exist are attached to the ceiling. You stand on your head briefly to ascertain that it is, in fact, not you who is oriented incorrectly.",
+    "Examine": {
+      "ceiling": "Really looks more like a ceiling.",
+      "floor": "This really ought to be a floor."
+    }
+  },
+  "27": {
+    "Name": "Surveillance Room",
+    "Description": "This walls of this room are embedded with multiple screens that appear to be connected to security cameras situated throughout the Rooms for Improvement. You excitedly scan the screens in the hopes of gaining useful information about the contents and layout of the dungeon. To your disappointment, every camera appears to be fixated on the same vase of flowers in a room you've never seen.",
+    "Examine": {
+      "screen": "You look for a screen displaying anything besides the same flower in the same vase. You don't find one.",
+      "screens": "You look for a screen displaying anything besides the same flower in the same vase. You don't find one.",
+      "displays": "You look for a screen displaying anything besides the same flower in the same vase. You don't find one.",
+      "flower": "You don't see anything special about this flower.",
+      "vase": "A pretty ordinary looking from vase no matter which screen you look at it from."
+    }
+  },
+  "28": {
+    "Name": "Elevator Room",
+    "Description": "This room appears to be a broken-down elevator that must have been reused as a dungeon room out of universal miserly spirit. The elevator panel and floor display are all in a state of disrepair, but try to press the call-for-help button anyways. Unsurprisingly, nothing happens. You notice an unusual potting soil stain in the corner of the chamber.",
+    "Examine": {
+      "elevator": "A nice-looking but old elevator. The carpet on the floor depicts the silhouette of a pelican.",
+      "floor": "A nice-looking but old elevator. The carpet on the floor depicts the silhouette of a pelican.",
+      "panel": "A number of buttons for various floors and miscellaneous functions. None of them are functional.",
+      "button": "A number of buttons for various floors and miscellaneous functions. None of them are functional.",
+      "buttons": "A number of buttons for various floors and miscellaneous functions. None of them are functional.",
+      "display": "The floor display says \"B2: Boiler Room\".<br>Hmm.",
+      "soil": "Someone must have tripped while carrying a potted plant here.",
+      "stain": "Someone must have tripped while carrying a potted plant here."
+    }
+  },
+  "29": {
+    "Name": "Botany Room",
+    "Description": "You find yourself in a room that might have been a greenhouse before being assumed by the Rooms for Improvement. Wilted stems litter the floor, as if confused why the water suddenly stopped coming one day. Pots of parched earth sit in carefully organized rows with broken measuring tools scattered haphazardly about. An important-looking seed sits in a divot in the center of the room, but upon closer inspection, you find that the insides have been eaten away by insects.",
+    "Examine": {
+      "pot": "Smooth earthen pots. Porousness tuned for optimized plant growth.",
+      "soil": "Surprisingly rich soil.",
+      "tools": "Various tools for measure soil acidity, humidity and other stuff. They all appear to be broken.",
+      "seed": "Something tells you that seed was meant for more.",
+      "insect": "Just hungry, really."
+    }
+  },
+  "30": {
+    "Name": "Light Room",
+    "Description": "The floor in this room is made of some transparent material, revealing a vast atria below. Sitting in the center of this unreachable space is an enormous light bulb on an upraised platform. With the dim light provided by this light you can just barely make out the platform's surroundings. You see a vast field of dead insects, carapaces glowing by the rays of somber light.",
+    "Examine": {
+      "atria": "Vast empty space. Hated by agoraphobes everywhere.",
+      "light": "Looks like a pretty old-fashioned incandescent light bulb, only unnaturally large.",
+      "light bulb": "Looks like a pretty old-fashioned incandescent light bulb, only unnaturally large.",
+      "bulb": "Looks like a pretty old-fashioned incandescent light bulb, only unnaturally large.",
+      "insects": "You sympathize with their fondness for light.",
+      "insect": "You sympathize with their fondness for light."
+    }
+  },
+  "31": {
+    "Name": "Knowledge Room",
+    "Description": "Inscribed on the walls of this room is the forbidden knowledge of an ancient predecessor who found truth somewhere at the bottom of this dungeon. Transcriptions, calculations, injunctions incoherently scrawled over each other with incomprehensible penmanship. You search the writing for useful information but find only this; \"DON'T TRUST DR. B\"",
+    "Examine": {
+      "writing": "Thoroughly impossible to read. The writer must have been a doctor or something like that.",
+      "knowledge": "Thoroughly impossible to read. The writer must have been a doctor or somehing like that.",
+      "walls": "Thoroughly impossible to read. The writer must have been a doctor or something like that."
+    }
+  },
+  "32": {
+    "Name": "Birdhouse Room",
+    "Description": "This room resembles the interior of a birdhouse for human-sized bird. Feathers and birdseed dot the cracks between the rough wooden stats on the floor and a wire perch hangs across the ceiling. Sitting in the corner of the room is a crumpled set of medieval European armor with a regularly-sized birdhouse attached to where the helmet should be.",
+    "Examine": {
+      "feather": "Fluffy down of some dungeon-dwelling bird.",
+      "birdseed": "Part of a complete breakfast. If you happen to be a bird.",
+      "perch": "How many fish can you name whose names can be used as verbs?",
+      "armor": "Once served as the party's main tank.",
+      "birdhouse": "Looks a miniature version of the birdhouse room you are standing in. Inside, you notice a tiny set of armor with an even smaller birdhouse as a head."
+    }
+  },
+  "33": {
+    "Name": "Secret Room",
+    "Description": "You are in the secret room. What exactly is secret about it?<br>I can't tell you. It's a secret.",
+    "Examine": {
+      "secret": "You attempt to examine the secret, but are unable to discern it.",
+      "lachiplatre": "YOU FOUND THE SECRET. CONGRATULATIONS. ALTERNATE WIN CONDITION ACHIEVED."
+    }
+  },
+  "34": {
+    "Name": "Mimic Room",
+    "Description": "While this room resembles an ordinary dungeon chamber, it is actually a horrible monster that lures prey into its maw by imitating a regular room. Fortunately, this one seems to be in a deep sleep, so you probably aren't in any danger.",
+    "Examine": {
+      "mimic": "Mimic casts Flooded Floor!<br>Operator takes 46 Blue Damage!<br>Pen Pal takes 33 Blue Damage.<br>Wait, wrong game."
+    }
+  },
+  "35": {
+    "Name": "Invisible Room",
+    "Description": "The walls of these rooms are fully transparent, allowing you to whatever is behind them. Unfortunately the only things behind them are the walls of the adjacent room.",
+    "Examine": {
+      "walls": "A brief glimpse into Upper Management's attempt to build the world's first cloaking device.",
+      "wall": "A brief glimpse into Upper Management's attempt to build the world's first cloaking device.",
+      "ceiling": "A brief glimpse into Upper Management's attempt to build the world's first cloaking device.",
+      "floor": "A brief glimpse into Upper Management's attempt to build the world's first cloaking device."
+    }
+  },
+  "36": {
+    "Name": "Broom Room",
+    "Description": "This room resembles a broom closet.<br>The broom closet is your favorite room.",
+    "Examine": {
+      "broom": "Oddly you can't find one."
+    }
+  },
+  "37": {
+    "Name": "Nebula Room",
+    "Description": "Despite being far underground, you feel as if you can gaze into the depths of space in this room. Above your head, a swirling nebula is projected, blurring the multitude of stars that fill the void where the ceiling should be. In the distance an ailing star approaches the end of its life cycle, sputtering and waning.",
+    "Examine": {
+      "nebula": "Dust becomes exponentially more interesting when in space.",
+      "star": "It reminds you of your own sun. Sure haven't seen that thing in a while.",
+      "stars": "A nice constellation. You sure don't get much light pollution down here."
+    }
+  },
+  "38": {
+    "Name": "Scratching Room",
+    "Description": "The walls of this room are covered in deep scratch marks from some sharp-clawed animal. You've heard that marks like these are used by predatory animals to claim their territory, but you doubt anyone would want to claim territory down here.",
+    "Examine": {
+      "scratch": "You can think of a few coworkers whose nails could potentially inflict marks like these.",
+      "scratches": "You can think of a few coworkers whose nails could potentially inflict marks like these."
+    }
+  },
+  "39": {
+    "Name": "Padded Room",
+    "Description": "The walls of this room are made of some sort of padded material, supposedly to prevent occupants from injuring themselves. Rooms like these eventually became obsoleted in the offices above ground when employees became too good enough at hurting themselves for a few pillows to suffice.",
+    "Examine": {
+      "pads": "Upper Management's patronizing attempt at protecting you fills you with the urge to injure yourself.",
+      "padding": "Upper Management's patronizing attempt at protecting you fills you with the urge to injure yourself."
+    }
+  },
+  "40": {
+    "Name": "Cremation Room",
+    "Description": "This chamber likely served as a crematorium in the long and distant past. Before the development of the Rooms for Improvement, Management dealt with unwanted rooms and people with incineration in rooms like this. Were the fumes of burning material not hated by environmentally-conscience administrators, the Rooms for Improvement would be undug earth and its contents, ash.",
+    "Examine": {
+    }
+  },
+  "41": {
+    "Name": "Familiar Room",
+    "Description": "This room bears striking resemblance to the office you held during your first year of employment at <REDACTED> Co. Why did it end up in the Rooms for Improvement? What defect made it irredeemable as a room in Management's eyes? Finding something so familiar at the bottom of a dungeon fills you with a despairing nostalgia.",
+    "Examine": {
+    }
+  },
+  "42": {
+    "Name": "Required Room",
+    "Description": "Written on the walls of this room are the words \"IMPORTANT ROOM. DO NOT TOUCH\". When management initiated the Rooms for Improvement program, employees who were attached to their personal spaces wrote words like this in an attempt to prevent their own rooms from being excised and dropped off into the dungeon below. Looks like this fellow who worked here was not successful in that endeavour.",
+    "Examine": {
+    }
+  },
+  "43": {
+    "Name": "Hollow Room",
+    "Description": "Most rooms are hollow, now that you think of it.",
+    "Examine": {
+    }
+  },
+  "44": {
+    "Name": "Fungal Room",
+    "Description": "The walls and floor of this room are coated in thick masses of fungus. Bundles of interwoven fibers interweave every interweavable surface of the overgrown room. At the points where these strands congregate, bloated fungal pustules form, occasionally exhaling clouds of spores into the humid air. The mushrooms coating the ground give it a spongy texture when walked upon.",
+    "Examine": {
+      "mushroom": "You don't recognize the species. They certainly don't look edible.",
+      "mushrooms": "You don't recognize the species. They certainly don't look edible.",
+      "spores": "You feel like you should avoid breathing these in."
+    }
+  },
+  "45": {
+    "Name": "Exhibition Room",
+    "Description": "This room was probably used as a gallery for displaying oddities in the past, given the number of dusty display cases lining the walls. Empty frames hang on the walls and a pile of rope-barriers lie uselessly in a corner. The contents of these frames and cases have long been extracted; salvaged and brought to the aboveground to fill some other room designed to impress visitors.",
+    "Examine": {
+      "display": "An empty glass case. Something exotic and unusual was once kept inside.",
+      "displays": "Empty glass cases. Something exotic and unusual was once kept inside.",
+      "case": "An empty glass case. Something exotic and unusual was once kept inside.",
+      "cases": "Empty glass cases. Something exotic and unusual was once kept inside.",
+      "frames": "This once surrounded an expensive and tasteful piece of art.",
+      "frame": "This once surrounded an expensive and tasteful piece of art.",
+      "rope": "A temporary barrier designed to channel queues of people along organized paths for display viewing.",
+      "ropes": "A temporary barrier designed to channel queues of people along organized paths for display viewing.",
+      "barrier": "A temporary barrier designed to channel queues of people along organized paths for display viewing.",
+      "barriers": "A temporary barrier designed to channel queues of people along organized paths for display viewing."
+    }
+  },
+  "46": {
+    "Name": "Gibberish Room",
+    "Description": "This room houses the company's first and only attempt at creating their own language for employees. Upper management felt that an exclusive, uniform tongue would get employees to better cooperate on projects.<br>What kinda company is this anyways?",
+    "Examine": {
+      "language": "You can't understand a word of it."
+    }
+  },
+  "47": {
+    "Name": "War Room",
+    "Description": "A long table sits in the middle of this serious-looking room. At one end lies a blank projector screen surrounded by maps of some unrecognizable continent. This room was originally used to discuss the company's tactics and strategies for combat. It must have ended up in the Rooms for Improvement after inter-corporate war fell out of popularity.",
+    "Examine": {
+      "table": "A long, metal table. It is refrigerated to a level of iciness that prevented people from sleeping on it during meetings.",
+      "map": "You can't recognize the landmass in the center of any of these maps. None of the location names sound familiar either.",
+      "maps": "You can't recognize the landmass in the center of any of these maps. None of the location names sound familiar either.",
+      "projector": "Even with no presentation on it, looking at this makes you feel a little sleepy."
+    }
+  },
+  "48": {
+    "Name": "Carpentry Room",
+    "Description": "The floor of this room is covered with wood shavings and nails. The disorganized clutter is further contributed to by moldy planks of two-by-four and broken tools.<br>So this explains why so many things in this dungeon are nailed to the floor.",
+    "Examine": {
+      "wood": "The wood scattered about is old enough to serve as a snack for insects and rot.",
+      "nails": "Even the nails are nailed to the floor.",
+      "nail": "Even the nails are nailed to the floor.",
+      "tools": "Any tool that was still functional and useful wouldn't have been dropped down here.",
+      "tool": "Any tool that was still functional and useful wouldn't have been dropped down here."
+    }
+  },
+  "49": {
+    "Name": "Cerebral Room",
+    "Description": "In the center of this poorly-lit room lies an enormous, pulsing brain. Pumps hanging overhead periodically spray green liquid over the grotesque mass to be collected by numerous drains. Metal fixtures protrude from the mass, occasionally emitting sparks of electricity. From these fixtures extend thick wires that connect to sophisticated nodes attached to the base of the surrounding walls.<br>Weird.",
+    "Examine": {
+      "brain": "Besides its size, this looks like a normal brain.",
+      "liquid": "You aren't really sure what this liquid is for, but it seems pretty important.",
+      "pump": "They make an unhealthy-sounding wheeze every time another squirt of green liquid comes out.",
+      "pumps": "They make an unhealthy-sounding wheeze every time another squirt of green liquid comes out.",
+      "drain": "You detect a foul rotting smell whenever you near one of these drains.",
+      "drains": "You detect a foul rotting smell whenever you near one of these drains.",
+      "fixture": "You sure wouldn't want one of these things stuck in your brain.",
+      "fixtures": "You sure wouldn't want one of these things stuck in your brain.",
+      "wire": "Looks like some sort of artificial nerve replacement.",
+      "wires": "Looks like some sort of artificial nerve replacement."
+    }
+  },
+  "50": {
+    "Name": "Volcanic Room",
+    "Description": "This room appears to have been created by an office-place volcanic eruption. Irregular, black masses cover the floor, resembling hardened pyroclastic flow. Deposits of ash dirty the corners and rough igneous pebbles crumble beneath your boots. The charred remains of an office desk lie partially buried underneath the rock, hinting as the room's identity before the apparent eruption.",
+    "Examine": {
+      "ash": "Looks ashy.",
+      "rock": "Black and crumbly. Like burnt food.",
+      "desk": "Hopefully nobody was using this desk when the eruption occurred."
+    }
+  },
+  "51": {
+    "Name": "Doomsday Room",
+    "Description": "You find yourself in a small concrete room with an enormous vault door attached to the ceiling. This room likely served as a survival bunker for Upper Management to wait out the apocalypse in peace. Rumor has it that the room was abandoned when Management realized that a concrete bunker would not be enough.",
+    "Examine": {
+      "ceiling": "An enormous vault door is attached to the ceiling. You can't imagine human hands being able to operate it.",
+      "vault": "An enormous vault door is attached to the ceiling. You can't imagine human hands being able to operate it.",
+      "door": "An enormous vault door is attached to the ceiling. You can't imagine human hands being able to operate it."
+    }
+  },
+  "52": {
+    "Name": "Wicker Room",
+    "Description": "The walls and floor of this room appear to be constructed from hand-woven wicker. Before the construction of the Rooms for Improvement, biodegradable rooms were heavily sought out to reduce the amount of space occupied by thrown-away rooms. It is uncertain whether these wicker rooms were a viable solution. After all, this one seems to still be taking up space.",
+    "Examine": {
+      "wicker": "Carefully woven strands of grass and twigs. It appears to have been soaked in some fragrant liquid to repel insects."
+    }
+  },
+  "53": {
+    "Name": "Embalming Room",
+    "Description": "You are in the chamber where the company embalming used to take place. In the past, embalming was used as a method of sanitarily dealing with the dead who would otherwise inconvenience coworkers with a foul smell. When the Rooms for Improvement, Upper Management found a better method of disposing of the dead and undead, leaving this room obsolete.",
+    "Examine": {
+    }
+  },
+  "54": {
+    "Name": "Forgery Room",
+    "Description": "This room closely resembles the company lobby, down to the stains on the floor and the species of plants. Room forging was once a serious workplace issue, connected to all manner of crimes from credit-card fraud to identity theft. When the Rooms for Improvement were established, Management would often choose to dispose of the original room rather than the counterfeit. This can be seen as giving great credit to the unnamed forgers.",
+    "Examine": {
+      "stain": "This stain appears to be slightly larger than the one in the original room.",
+      "plant": "These plants are much more poorly maintained than the ones in the original lobby."
+    }
+  },
+  "55": {
+    "Name": "Claustrophobic Room",
+    "Description": "You find yourself in a room the approximate size of the trunk of a small car. You are unsure of the architectural implications of this room connecting to four regular sized rooms. If any events appeared in this room, assume that they are also much smaller than average without loss of effectiveness.",
+    "Examine": {
+    }
+  },
+  "56": {
+    "Name": "Detritus Room",
+    "Description": "This room is covered with decaying organic matter. Dead leaves. Dead things that ate leaves. Dead things that ate those dead things. You have no interest in joining this particular decaying food-chain, but feel very much at risk of suffering the same fate, nonetheless",
+    "Examine": {
+      "leaves": "Dead leaves. Nothing much to add.",
+      "detritus": "General assortment of little dead things."
+    }
+  },
+  "57": {
+    "Name": "Victory Room",
+    "Description": "A room decorated with various trophies, medals and celebratory banners. Empty champagne bottles and confetti litter the heavily stained floor. This room was once dedicated to an obscure company victory at some forgotten contest, but was dropped into the dungeon when the use of illicit steroids came to light.",
+    "Examine": {
+      "trophy": "\"Number 1 boss\" it reads.",
+      "trophies": "\"Number 1 boss\" it reads.",
+      "medal": "An unwanted participation medal.",
+      "medals": "An unwanted participation medal.",
+      "banner": "Hand-painted banner hung around the walls. \"go you\" it reads.",
+      "banners": "Hand-painted banner hung around the walls. \"go you\" it reads.",
+      "confetti": "Torn-up pieces of whatever.",
+      "champagne": "Not a drop of the expensive champagne remains for you.",
+      "bottle": "Not a drop of the expensive champagne remains for you.",
+      "bottles": "Not a drop of the expensive champagne remains for you."
+    }
+  },
+  "58": {
+    "Name": "Recycling Room",
+    "Description": "A room containing a number of labeled, green bins. Once used to encourage recycling, this room was eventually recycled itself into the dungeon chamber you find yourself in now.",
+    "Examine": {
+      "bin": "Separated into glass, plastic, paper, metal, lachiplatre.<br>Wait, what the heck is lachiplatre?<br>Anyways, all the bins are empty and nailed to the ground.",
+      "bins": "Separated into glass, plastic, paper, metal, lachiplatre.<br>Wait, what the heck is lachiplatre?<br>Anyways, all the bins are empty and nailed to the ground."
+    }
+  },
+  "59": {
+    "Name": "Confiscation Room",
+    "Description": "A room lined with empty cardboard boxes. These boxes once held the multitude of goodies confiscated in the offices above by fun-hating administrators. Bouncy balls, paper planes, laser pointers, wind-up toys and hand-held games...Someone else must have gotten here first and taken all these toys and distractions before you could.",
+    "Examine": {
+      "box": "Once held the lone shards of fun in a thorough fun-vacuum.",
+      "boxes": "Once held the lone shards of fun in a thorough fun-vacuum.",
+      "cardboard": "Once held the lone shards of fun in a thorough fun-vacuum."
+    }
+  },
+  "60": {
+    "Name": "Standardized Room",
+    "Description": "This room is precisely 8 feet by 10 feet in size. A uniform pattern of office lights are attached to the standard ceiling and shine predictably on the generic furniture inside. There is deliberately very little to say about this room.",
+    "Examine": {
+      "light": "Florescent, pale light that makes you feel a little cold.",
+      "lights": "Florescent, pale light that makes you feel a little cold.",
+      "furniture": "The same cubicle desk. The same shelves, plants and carpet."
+    }
+  },
+  "61": {
+    "Name": "Condor Room",
+    "Description": "You find yourself in a tall chamber, the top of which is made of transparent material. The floor where you stand is covered with twigs and dirty feathers. Through a massive hole in the ceiling extends a monstrous condor puppet. The puppet lies limply, condor food held in its mouth, offering an unconvincing illusion of comfort",
+    "Examine": {
+      "twig": "A pile of twigs makes up an amateur attempt at a bird's nest.",
+      "twis": "A pile of twigs makes up an amateur attempt at a bird's nest.",
+      "feather": "Soft, downy feathers. Like the innards of a pillow.",
+      "feathers": "Soft, downy feathers. Like the innards of a pillow.",
+      "puppet": "An unnerving approximation of a mother condor. Button eyes and plastic-like skin create an imitation that could only fool a newborn condor.",
+      "food": "What exactly do baby condors eat anyways?"
+    }
+  }
+}

@@ -32,6 +32,9 @@ public class StateManager {
 	//The notif manager manages notifications. a "notification" is just any window that pops up at any time for any purpose.
 	private NotificationManager notificationManager;
 	
+	//The item manager manages items. atm this only includes the player inventory but will eventually account for global items.
+	private ItemManager itemManager;
+	
 	private Skin skin;
 	
 	public StateManager() {
@@ -50,6 +53,7 @@ public class StateManager {
 		sceneManager  = new SceneManager(assetManager, this);
 		mapManager = new MapManager(assetManager, this);
 		timeManager  = new TimeManager(assetManager, this);
+		itemManager = new ItemManager(assetManager, this);
 		
 		mapManager.moveTo("Sodden Lot");
 	}
@@ -72,6 +76,10 @@ public class StateManager {
 	
 	public NotificationManager getNotificationManager() {
 		return notificationManager;
+	}
+	
+	public ItemManager getItemManager() {
+		return itemManager;
 	}
 
 	public APlayer getPlayer() {
