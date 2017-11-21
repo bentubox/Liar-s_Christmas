@@ -1,20 +1,10 @@
 package com.lc.game.Manager;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.lc.game.AssetList;
-import com.lc.game.GlobalActors.Player.APlayer;
 
-/**
- * The StateManager manages all game related whatever.
- * ATM it holds a bunch of different managers that separate stored information. This isn't really necessary and we can combine them
- * later if we feel like it.
- * @author Zachary Tu
- *
- */
+import com.badlogic.gdx.assets.AssetManager;
+import com.lc.game.Map.MapState;
+import com.lc.game.Scene.SceneState;
+
 public class StateManager {
 	
 	//The map manager manages all map-related properties of the game. (Nodes and node properties)
@@ -38,10 +28,6 @@ public class StateManager {
 	private Skin skin;
 	
 	public StateManager() {
-
-	}
-	
-	public void initStates(AssetManager assetManager) {
 		
 		BitmapFont font24 = new BitmapFont();
 		this.skin = new Skin();
@@ -58,32 +44,20 @@ public class StateManager {
 		mapManager.moveTo("Sodden Lot");
 	}
 	
-	public Skin getSkin() {
-		return skin;
+	public void initStates(AssetManager assetManager) {
+		mapState = new MapState(assetManager, this);
+		sceneState  = new SceneState(assetManager, this);
 	}
 
-	public MapManager getMapManager() {
-		return mapManager;
-	}
-
-	public SceneManager getSceneManager() {
-		return sceneManager;
-	}
-	
-	public TimeManager getTimeManager() {
-		return timeManager;
-	}
-	
-	public NotificationManager getNotificationManager() {
-		return notificationManager;
+	public MapState getMapState() {
+		return mapState;
 	}
 	
 	public ItemManager getItemManager() {
 		return itemManager;
 	}
 
-	public APlayer getPlayer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public SceneState getSceneState() {
+		return sceneState;
+	}	
 }

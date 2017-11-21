@@ -9,8 +9,20 @@ public enum AssetList {
 	TITLE_CARD("ornament_title.jpg", Texture.class),
 	BUTLER_FONT("fonts/butler.fnt", null),
 	LEARNING_FONT("fonts/learning_curve.fnt", null),
-	MAP("lolitsrice_placeholder.png", Texture.class),
-	MAP_NODE("node.png", Texture.class),
+
+	MAP("map/lolitsrice_placeholder.png", Texture.class),
+	MAP_NODE("map/node.png", Texture.class),
+	
+	BACKGROUND_PLACEHOLDER("background/background_placeholder.jpg", Texture.class),
+	PORTRAIT_PLACEHOLDER_COOPER("portrait/ref_placeholder_cooper.jpg", Texture.class),
+	PORTRAIT_PLACEHOLDER_RITA("portrait/ref_placeholder_rita.jpg", Texture.class),
+	PORTRAIT_PLACEHOLDER_ROBBART("portrait/ref_placeholder_robbart.jpg", Texture.class),
+	PORTRAIT_PLACEHOLDER_TATE("portrait/ref_placeholder_tate.jpg", Texture.class),
+	SCRIPT_TEST("script/test_0.script", null),
+
+	SCENE1TEST("scenes/Scene1Test.png", Texture.class),
+	SCENE2TEST("scenes/Scene2Test.png", Texture.class),
+	
 	UISKINIMG("ui/uiskin.png", Texture.class),
 	UISKINATL("ui/uiskin.atlas", TextureAtlas.class),
 	
